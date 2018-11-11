@@ -1,0 +1,54 @@
+.home{
+  background-image: url('../images/home.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  position: absolute;
+  top:0px;
+  left:0px;
+  width: 100%;
+  height: 100%;
+  /*animation-duration: 3s;*/
+  transition: all .4s ease;
+  }
+
+.startQuiz{
+	font-size: 3em;
+	top: 31%;
+	color: #000000;
+    transition: 0.6s;
+    padding-left: 3%;
+    display: none;
+}
+
+.startQuiz:hover{
+	transform: scale(1.05);
+	cursor: pointer;
+}
+
+
+/*@keyframes stopMotionHome {
+    0%   {  background-image: url('../images/pencil.jpg');}
+    19.99%   {  background-image: url('../images/pencil.jpg');}
+    
+    20%  {  background-image: url('../images/pen.jpg');}
+    39.99%  {  background-image: url('../images/pen.jpg');}
+    
+    40%  {  background-image: url('../images/eraser.jpg');}
+    59.99%  {  background-image: url('../images/eraser.jpg');}
+    
+    60% {  background-image: url('../images/back.jpg');}
+    79.99% {  background-image: url('../images/back.jpg');}
+    
+    80% {  background-image: url('../images/book.jpg');}
+    99.99% {  background-image: url('../images/book.jpg');}
+    
+    100% {  background-image: url('../images/bookPen.jpg');} 
+}
+*/
+/*@keyframes stopMotionHome {
+    0%   {  background-image: url('../images/stopMotionHome.gif');}
+    90%   {  background-image: url('../images/stopMotionHome.gif');}
+    100% { background-image: url('../images/bookPen.jpg');} 
+}*/
+

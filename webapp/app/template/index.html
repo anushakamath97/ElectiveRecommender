@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+    <link href="{% static 'css/googleFonts.css' %}" rel="stylesheet" type="text/css">
+  	<link href="{% static 'css/bootstrap/bootstrap.css' %}" rel="stylesheet" type="text/css">
+  	<link href="{% static 'css/landing.css' %}" rel="stylesheet" type="text/css">
+  	<link href="{% static 'css/homepage.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/honeycomb.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/quiz.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/recommendation.css' %}" rel="stylesheet" type="text/css">    
+</head>
+<body>
+<header>
+  <section class="header-content">
+    <h1 class="header-title animate-pop-in">Trouble choosing electives?</h1>
+    <h3 class="header-subtitle animate-pop-in">We're here to help.</h3>
+    <button class="header-button btn animate-pop-in" onclick="scrollUpLanding()">Get started</button>
+  </section>
+</header>
+<section id="app">
+<section class="home">
+<div class="col-md-5 col-md-offset-5 startQuiz" onclick="changeBack()">
+  <span>START QUIZ</span>
+</div>
+<section class='hexa1'>  
+    <article>
+      <figure>
+        <h2 id="hexaIcon1"></h2>
+      </figure>
+      <img id='hexagon' src="{% static 'images/hexaBlackImage.jpg' %}" />
+    </article>
+    <article>
+      <figure>
+        <h2 id="hexaIcon2"></h2>
+      </figure>
+      <img id='hexagon' src="{% static 'images/hexaBlackImage.jpg' %}" />
+    </article>
+    <article>
+      <figure>
+        <h2 id="hexaIcon3"></h2>
+      </figure>
+      <img id='hexagon' src="{% static 'images/hexaBlackImage.jpg' %}" />
+    </article>
+    <article>
+      <figure>
+        <h2 id="hexaIcon4"></h2>
+      </figure>
+      <img id='hexagon' src="{% static 'images/hexaBlackImage.jpg' %}" />
+    </article>
+    <article>
+      <figure>
+      </figure> 
+    </article>
+    <article>
+    <figure>
+      <h2 id="hexaIcon5"></h2>
+      <img id='hexagon' src="{% static 'images/hexaBlackImage.jpg' %}" />
+    </figure>
+  </article>
+    <article>
+    <figure>
+
+    </figure>
+  </article>
+</section>
+<section class='hexa2'>  
+    <article>
+      <figure>
+      </figure>
+    </article>
+    <article>
+      <figure>
+        <h2 id="hexaIcon6"></h2>
+      </figure>
+      <img id='hexagon' src="{% static 'images/hexaBlackImage.jpg' %}" />
+    </article>
+    <article>
+      <figure>
+      </figure>
+    </article>
+    <article>
+      <figure>
+        <h2 id="hexaIcon7"></h2>
+      </figure>
+      <img id='hexagon' src="{% static 'images/hexaBlackImage.jpg' %}" />
+    </article>
+    <article>
+      <figure>
+      <h2 id="hexaIcon8"></h2>
+      <img id='hexagon' src="{% static 'images/hexaBlackImage.jpg' %}" />
+      </figure> 
+    </article>
+    <article>
+    <figure>
+      <h2 id="hexaIcon9"></h2>
+      <img id='hexagon' src="{% static 'images/hexaBlackImage.jpg' %}" />
+    </figure>
+  </article>
+    <article>
+    <figure>
+      <h2 id="hexaIcon10"></h2>
+      <img id='hexagon' src="{% static 'images/hexaBlackImage.jpg' %}" />
+    </figure>
+  </article>
+</section>
+
+<section id="studentDetailsDiv">
+<student-details inline-template ref="student_details">
+<form>
+  <fieldset class="col-md-8 usnDiv">
+  <span>ENTER USN</span>
+  <input type="text" name="usn" placeholder="USN" v-model="studentDetails.usn" />
+  <span v-cloak v-if="studentDetails.usn!=null && studentDetails.usn.length!=12" class="text-danger">* Enter valid USN</span><br>
+  <span>SEMESTER</span>
+  <input type="text" name="sem" placeholder="SEMESTER" disabled />
+  <input type="button" name="next" class="usnNext next btn" value="Next" :disabled="studentDetails.usn==null || studentDetails.usn.length!=12"/>
+  </fieldset>
+  <fieldset class="col-md-8 specialisation">
+  <span>Select Your Desired Specialisation</span><br>
+  <input type="radio" name="Specialisation" value="AlgoAndComp" checked> Algorithms and Computing Models<br>
+  <input type="radio" name="Specialisation" value="DataScience"> Data Science<br>
+  <input type="radio" name="Specialisation" value="systemAndCore"> System and Core Computing<br>
+  <input type="radio" name="Specialisation" value="none"> None
+  <input type="button" name="next" class="specNext next btn" value="Next"/>
+  </fieldset>
+</form>
+</student-details>
+</section>
+</section>
+<section class="recoLoad">
+  <span>Analyzing data...</span><br>
+</section>  
+<section class="recoResult">
+  <reco-result inline-template ref="reco_result">
+    <section class="resultSection">
+    <h2 id="recoResultHead">We Recommend...</h2>
+    <div id="pool1">
+      <span>Pool 1</span>
+    </div>
+    <div id="pool2">
+      <span>Pool 2</span>
+    </div>
+    <div id="postIt1">
+      <span>[[firstPool1]]</span>
+    </div>
+     <div id="postIt2">
+      <span>[[secondPool1]]</span>
+    </div>
+     <div id="postIt3">
+      <span>[[firstPool2]]</span>
+    </div>
+     <div id="postIt4">
+      <span>[[secondPool2]]</span>
+    </div>
+    </section>
+  </reco-result>
+</section>
+</section>
+
+<script src="{% static 'js/vue.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/vue-resource.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/jquery.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/bootstrap.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/main.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/scrollLanding.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/quiz.js' %}" type="text/javascript"></script>
+</body>
+</html>
+
