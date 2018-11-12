@@ -10,12 +10,22 @@ showResults=function(){
 
 $('.specNext').click(function(){
 	$('.specialisation').fadeOut();
+	$('.weightage').fadeIn(1500);
+});
+
+$('.meterNext').click(function(){
+	$('.weightage').fadeOut();
 	$('.recoLoad').fadeIn(1500);
 	$('.recoLoad').delay(8000).fadeOut(500);
 	// $('.recoResult').delay(8500).fadeIn(500).done(showResults());
 	$.when($('.recoResult').delay(8500).fadeIn(500))
                                .done(function() {
    			 showResults();
+			});$('.recoLoad').fadeIn(1500);
+	$('.recoLoad').delay(8000).fadeOut(500);
+	// $('.recoResult').delay(8500).fadeIn(500).done(showResults());
+	$.when($('.recoResult').delay(8500).fadeIn(500))
+                               .done(function() {
+   			 showResults();
 			});
-});
-
+})

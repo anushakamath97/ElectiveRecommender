@@ -11,6 +11,7 @@
     <link href="{% static 'css/honeycomb.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/quiz.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/recommendation.css' %}" rel="stylesheet" type="text/css">    
+    <link href="{% static 'css/meter.css' %}" rel="stylesheet" type="text/css">    
 </head>
 <body>
 <header>
@@ -130,6 +131,66 @@
 </student-details>
 </section>
 </section>
+<section class="col-md-8 weightage">
+  <div id="meterwrapper">
+    <svg id="meter">
+        <circle id="outline_curves" class="circular outline"  cx="50%" cy="50%">
+        </circle>
+        <circle id="low" class="circular range" cx="50%" cy="50%" stroke="#FDE47F">
+        </circle>
+        <circle id="avg" class="circular range" cx="50%" cy="50%" stroke="#7CCCE5">
+        </circle>
+        <circle id="high" class="circular range" cx="50%" cy="50%" stroke="#E04644">
+        </circle>
+        <circle id="mask" class="circular" cx="50%" cy="50%" >
+        </circle>
+        <circle id="outline_ends" class="circular outline" cx="50%" cy="50%">
+        </circle>
+    </svg>
+    <img id="meter_needle" src="{% static 'images/svg-meter-gauge-needle.svg' %}" alt="">
+    <input id="slider" type="range" min="0" max="100" value="0" /> 
+    <label id="lbl" id="value" for="">0%</label>
+    </div>
+    <div id="meterwrapper1">
+    <svg id="meter1">
+        <circle id="outline_curves1" class="circular1 outline1"  cx="50%" cy="50%">
+        </circle>
+        <circle id="low1" class="circular1 range1" cx="50%" cy="50%" stroke="#FDE47F">
+        </circle>
+        <circle id="avg1" class="circular1 range1" cx="50%" cy="50%" stroke="#7CCCE5">
+        </circle>
+        <circle id="high1" class="circular1 range1" cx="50%" cy="50%" stroke="#E04644">
+        </circle>
+        <circle id="mask1" class="circular1" cx="50%" cy="50%" >
+        </circle>
+        <circle id="outline_ends1" class="circular1 outline1" cx="50%" cy="50%">
+        </circle>
+    </svg>
+    <img id="meter_needle1" src="{% static 'images/svg-meter-gauge-needle.svg' %}" alt="">
+    <input id="slider1" type="range" min="0" max="100" value="0" /> 
+    <label id="lbl1" id="value" for="">0%</label>
+    </div>
+    <div id="meterwrapper2">
+    <svg id="meter2">
+        <circle id="outline_curves2" class="circular2 outline2"  cx="50%" cy="50%">
+        </circle>
+        <circle id="low2" class="circular2 range2" cx="50%" cy="50%" stroke="#FDE47F">
+        </circle>
+        <circle id="avg2" class="circular2 range2" cx="50%" cy="50%" stroke="#7CCCE5">
+        </circle>
+        <circle id="high2" class="circular2 range2" cx="50%" cy="50%" stroke="#E04644">
+        </circle>
+        <circle id="mask2" class="circular2" cx="50%" cy="50%" >
+        </circle>
+        <circle id="outline_ends2" class="circular2 outline2" cx="50%" cy="50%">
+        </circle>
+    </svg>
+    <img id="meter_needle2" src="{% static 'images/svg-meter-gauge-needle.svg' %}" alt="">
+    <input id="slider2" type="range" min="0" max="100" value="0" /> 
+    <label id="lbl2" id="value2" for="">0%</label>
+    </div>
+    <!-- <input type="button" name="next" class="meterNext next btn" value="Next"/> -->
+</section>
 <section class="recoLoad">
   <span>Analyzing data...</span><br>
 </section>  
@@ -168,6 +229,9 @@
 <script src="{% static 'js/main.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/scrollLanding.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/quiz.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/meter.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/meter1.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/meter2.js' %}" type="text/javascript"></script>
 </body>
 </html>
 

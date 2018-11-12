@@ -40,3 +40,19 @@
     padding-left: 3%;
 }
 
+.weightage{
+  position: absolute;
+  top:0%;
+  height: 100%;
+  width: 100%;
+  left:0%;
+  z-index: 2;
+  /*padding-left: 2%;*/
+  /*padding-right: 2%;*/
+  display: none;
+  background-image: url('../images/scale.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
