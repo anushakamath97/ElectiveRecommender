@@ -10,6 +10,19 @@ showResults=function(){
 
 $('.specNext').click(function(){
 	$('.specialisation').fadeOut();
+	if($('#semester').val() > 5 && $('#semester').val() < 9)
+		$('.prevElectives').fadeIn(1500);
+	else if($('#semester').val() == 5)
+		$('.interests').fadeIn(1500);
+});
+
+$('.elecNext').click(function(){
+	$('.prevElectives').fadeOut();
+	$('.interests').fadeIn(1500);
+});
+
+$('.interestNext').click(function(){
+	$('.interests').fadeOut();
 	$('.weightage').fadeIn(1500);
 });
 

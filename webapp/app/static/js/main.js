@@ -3,7 +3,7 @@ var studentDetailsComp=Vue.component('student-details',{
     return{
       studentDetails:{
         usn:null,
-      }
+      },
     }
   },
   methods:{
@@ -11,6 +11,11 @@ var studentDetailsComp=Vue.component('student-details',{
       this.$parent.showQuiz=true;
     }
   }
+});
+
+var electiveList = Vue.component('elective-list',{
+	template : "<li> {{elec}} </li>",
+	props : ['title']
 });
 
 var recoResultComp=Vue.component('reco-result',{
@@ -37,13 +42,19 @@ var vue = new Vue({
   el: '#app',
   delimiters:["[[","]]"],
   data: function(){
-    return{
+	return{
       showQuiz:false,
+      elective1: [{id:1, cname:"Advanced Algorithms",}, 
+	{id:2, cname:"Advanced Database Management Systems",}, 
+	{id:3, cname:"Big Data",},
+	{id:4, cname:"Multimedia  Computing",},
+	{id:5, cname:"XML Technologies"},],
     }
   },
   components:{
     'student-details':studentDetailsComp,
     'reco-result':recoResultComp,
+    'elective-list':electiveList,
   },
   methods: {
   },
