@@ -74,3 +74,9 @@
   background-size: 100% 100%;
 }
 
+#weightageHead{
+  position: absolute;
+  left:2%;
+  color: #ffffff;
+  font-size: 3em;
+}

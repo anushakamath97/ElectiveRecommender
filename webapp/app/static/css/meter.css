@@ -5,6 +5,21 @@
     top:10%;
     left:15%;
 }
+.meterNext{
+    float: right;
+    margin-right: 5%;
+    width: 10%;
+    margin-top: 45%;
+    font-size: 2em;
+}
+
+.meterNext:hover{
+    color: #ffffff;
+}
+
+
+
+
 #meter {
     width: 100%; height: 100%;
     transform: rotateX(180deg);
@@ -22,18 +37,18 @@
     cursor: pointer;
     margin: auto;
     right: 0;
-    top: 100%;
+    top: 90%;
     width: 94%;
 }
 #lbl {
     background-color: #4B4C51; 
     border-radius: 2px;
     color: white;   
-    font-size: 15pt;
+    font-size: 3em;
     font-weight: bold;
     padding: 4px 4px 2px 4px;
-    top: 85%;
-    left:50%;
+    top: 125%;
+    left:45%;
 }
 #meter_needle {
     height: 40%;
@@ -156,18 +171,18 @@ input[type=range]:focus::-ms-fill-upper {
     cursor: pointer;
     margin: auto;
     right: 0;
-    top: 100%;
+    top: 90%;
     width: 94%;
 }
 #lbl1 {
     background-color: #4B4C51; 
     border-radius: 2px;
     color: white;   
-    font-size: 15pt;
+    font-size: 3em;
     font-weight: bold;
     padding: 4px 4px 2px 4px;
-    top: 85%;
-    left:50%;
+    top: 125%;
+    left:45%;
 }
 #meter_needle1 {
     height: 40%;
@@ -205,18 +220,18 @@ input[type=range]:focus::-ms-fill-upper {
     cursor: pointer;
     margin: auto;
     right: 0;
-    top: 100%;
+    top: 90%;
     width: 94%;
 }
 #lbl2 {
     background-color: #4B4C51; 
     border-radius: 2px;
     color: white;   
-    font-size: 15pt;
+    font-size: 3em;
     font-weight: bold;
     padding: 4px 4px 2px 4px;
-    top: 85%;
-    left:50%;
+    top: 125%;
+    left:45%;
 }
 #meter_needle2 {
     height: 40%;
@@ -227,4 +242,11 @@ input[type=range]:focus::-ms-fill-upper {
     top: 10%;
     transform-origin: bottom center;
     transform: rotate(270deg);
+}
+
+
+#meterHead,#meterHead1,#meterHead2{
+    color: #ffffff;
+    text-align: center;
+    font-size: 2.5em;
 }

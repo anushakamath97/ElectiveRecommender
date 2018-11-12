@@ -9,11 +9,11 @@ showResults=function(){
 }
 
 $('.specNext').click(function(){
-	$('.specialisation').fadeOut();
+	$('.specialisation').fadeOut(1000);
 	if($('#semester').val() > 5 && $('#semester').val() < 9)
-		$('.prevElectives').fadeIn(1500);
+		$('.prevElectives').delay(2000).fadeIn(1500);
 	else if($('#semester').val() == 5)
-		$('.interests').fadeIn(1500);
+		$('.interests').delay(2000).fadeIn(1500);
 });
 
 $('.elecNext').click(function(){
@@ -29,12 +29,6 @@ $('.interestNext').click(function(){
 $('.meterNext').click(function(){
 	$('.weightage').fadeOut();
 	$('.recoLoad').fadeIn(1500);
-	$('.recoLoad').delay(8000).fadeOut(500);
-	// $('.recoResult').delay(8500).fadeIn(500).done(showResults());
-	$.when($('.recoResult').delay(8500).fadeIn(500))
-                               .done(function() {
-   			 showResults();
-			});$('.recoLoad').fadeIn(1500);
 	$('.recoLoad').delay(8000).fadeOut(500);
 	// $('.recoResult').delay(8500).fadeIn(500).done(showResults());
 	$.when($('.recoResult').delay(8500).fadeIn(500))

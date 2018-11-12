@@ -127,16 +127,17 @@
   <input type="radio" name="Specialisation" value="none"> None
   <input type="button" name="next" class="specNext next btn" value="Next"/>
   </fieldset>
+  <elective-list inline-template refs="elective_list">
   <fieldset class="col-md-8 prevElectives">
   <span>Select Your Previous Electives</span><br>
 	<div class="row sem6">
 		<div class="col-md-2 elective1">
 			<span>Elective 1</span><br/>
-			<ul>
-				<li is="elective-list"\
-					v-for="(elec, id) in elective1"
-					v-bind:key="elec.id"
-					v-bind:elec="elec.cname"></li>
+			<ul style="list-style-type: none;">
+				<li v-for="elec in Elective1">
+          <input type="checkbox" name="">[[elec.cname]]<br>
+        <!-- [[elec.id]] --> 
+      </li>
 			</ul>
 		</div>
 		<div class="col-md-2 elective2">
@@ -145,6 +146,7 @@
 	</div>
 	<input type="button" name="next" class="elecNext next btn" value="Next"/>
   </fieldset>
+  </elective-list>
   <fieldset class="col-md-8 interests">
   <span>Select Your Interests</span><br>
 	<input type="button" name="next" class="interestNext next btn" value="Next"/>
@@ -170,8 +172,9 @@
         </circle>
     </svg>
     <img id="meter_needle" src="{% static 'images/svg-meter-gauge-needle.svg' %}" alt="">
-    <input id="slider" type="range" min="0" max="100" value="0" /> 
-    <label id="lbl" id="value" for="">0%</label>
+    <input id="slider" name="performance" type="range" min="0" max="100" value="0" /> 
+    <h3 id="meterHead">Performance</h3>
+    <label id="lbl" id="value" for="performance">0%</label>
     </div>
     <div id="meterwrapper1">
     <svg id="meter1">
@@ -189,8 +192,9 @@
         </circle>
     </svg>
     <img id="meter_needle1" src="{% static 'images/svg-meter-gauge-needle.svg' %}" alt="">
-    <input id="slider1" type="range" min="0" max="100" value="0" /> 
-    <label id="lbl1" id="value" for="">0%</label>
+    <input id="slider1" name="Interests" type="range" min="0" max="100" value="0" /> 
+    <h3 id="meterHead1">Interests</h3>
+    <label id="lbl1" id="value" for="Intersts">0%</label>
     </div>
     <div id="meterwrapper2">
     <svg id="meter2">
@@ -208,10 +212,12 @@
         </circle>
     </svg>
     <img id="meter_needle2" src="{% static 'images/svg-meter-gauge-needle.svg' %}" alt="">
-    <input id="slider2" type="range" min="0" max="100" value="0" /> 
-    <label id="lbl2" id="value2" for="">0%</label>
+    <input id="slider2" name="special" type="range" min="0" max="100" value="0" /> 
+    <h3 id="meterHead2">Specialisation</h3>
+    <label id="lbl2" id="value2" for="special">0%</label>
     </div>
-    <!-- <input type="button" name="next" class="meterNext next btn" value="Next"/> -->
+    <h3 id="weightageHead">Adjust the slider based on your weightage of importance</h3>
+    <input type="button" name="next" class="meterNext btn" value="Next"/>
 </section>
 <section class="recoLoad">
   <span>Analyzing data...</span><br>
@@ -229,14 +235,33 @@
     <div id="postIt1">
       <span>[[firstPool1]]</span>
     </div>
+    <div id="postIt1Open">
+      <div id="postItDetails">
+        <h2>[[firstPool1]]</h2>
+        <span>Description : [[firstPool1]]</span><br>
+        <span>Teacher(s) : [[firstPool1]]</span><br>
+        <span>Specialization(s) : [[firstPool1]]</span><br>
+        <span>Prerequisite : [[firstPool1]]</span><br>
+      </div>
+      <input type="button" name="back" class="back btn" value="Back"/>
+    </div>
      <div id="postIt2">
       <span>[[secondPool1]]</span>
+    </div>
+    <div id="postIt2Open">
+      <input type="button" name="back" class="back btn" value="Back"/>
     </div>
      <div id="postIt3">
       <span>[[firstPool2]]</span>
     </div>
+    <div id="postIt3Open">
+      <input type="button" name="back" class="back btn" value="Back"/>
+    </div>
      <div id="postIt4">
       <span>[[secondPool2]]</span>
+    </div>
+    <div id="postIt4Open">
+      <input type="button" name="back" class="back btn" value="Back"/>
     </div>
     </section>
   </reco-result>
@@ -254,6 +279,7 @@
 <script src="{% static 'js/meter.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/meter1.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/meter2.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/results.js' %}" type="text/javascript"></script>
 </body>
 </html>
 

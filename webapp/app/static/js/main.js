@@ -14,8 +14,20 @@ var studentDetailsComp=Vue.component('student-details',{
 });
 
 var electiveList = Vue.component('elective-list',{
-	template : "<li> {{elec}} </li>",
-	props : ['title']
+	// template : "<li> {{elec}} </li>",
+	// props : ['elec']
+  data:function(){
+    return{
+      Elective1: [{id:1, cname:"Advanced Algorithms",}, 
+  {id:2, cname:"Advanced Database Management Systems",}, 
+  {id:3, cname:"Big Data",},
+  {id:4, cname:"Multimedia  Computing",},
+  {id:5, cname:"XML Technologies"},]
+  }
+  },
+  methods:{
+
+  }
 });
 
 var recoResultComp=Vue.component('reco-result',{
@@ -44,11 +56,6 @@ var vue = new Vue({
   data: function(){
 	return{
       showQuiz:false,
-      elective1: [{id:1, cname:"Advanced Algorithms",}, 
-	{id:2, cname:"Advanced Database Management Systems",}, 
-	{id:3, cname:"Big Data",},
-	{id:4, cname:"Multimedia  Computing",},
-	{id:5, cname:"XML Technologies"},],
     }
   },
   components:{
