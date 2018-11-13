@@ -116,32 +116,72 @@
   <input type="text" name="usn" placeholder="USN" v-model="studentDetails.usn" />
   <span v-cloak v-if="studentDetails.usn!=null && studentDetails.usn.length!=12" class="text-danger">* Enter valid USN</span><br>
   <span>SEMESTER</span>
-  <input type="text" name="sem" placeholder="SEMESTER" value="6" id="semester" disabled />
+  <input type="text" name="sem" placeholder="SEMESTER" value="7" id="semester" disabled />
   <input type="button" name="next" class="usnNext next btn" value="Next" :disabled="studentDetails.usn==null || studentDetails.usn.length!=12"/>
   </fieldset>
   <fieldset class="col-md-8 specialisation">
   <span>Select Your Desired Specialisation</span><br>
-  <input type="radio" name="Specialisation" value="AlgoAndComp" checked> Algorithms and Computing Models<br>
+  <input type="radio" name="Specialisation" value="AlgoAndComp" > Algorithms and Computing Models<br>
   <input type="radio" name="Specialisation" value="DataScience"> Data Science<br>
   <input type="radio" name="Specialisation" value="systemAndCore"> System and Core Computing<br>
-  <input type="radio" name="Specialisation" value="none"> None
+  <input type="radio" name="Specialisation" value="none" checked> None
   <input type="button" name="next" class="specNext next btn" value="Next"/>
   </fieldset>
   <elective-list inline-template refs="elective_list">
   <fieldset class="col-md-8 prevElectives">
   <span>Select Your Previous Electives</span><br>
-	<div class="row sem6">
-		<div class="col-md-2 elective1">
+	<div class="row sem5">
+		<div class="col-md-6 elective1">
 			<span>Elective 1</span><br/>
 			<ul style="list-style-type: none;">
 				<li v-for="elec in Elective1">
-          <input type="checkbox" name="">[[elec.cname]]<br>
-        <!-- [[elec.id]] --> 
-      </li>
+          			<input type="checkbox" name="elec1" class='elec1' :value='elec.cname'>[[elec.cname]]<br>
+      				</li>
 			</ul>
 		</div>
-		<div class="col-md-2 elective2">
+		<div class="col-md-6 elective2">
 			<span>Elective 2</span><br/>
+			<ul style="list-style-type: none;">
+				<li v-for="elec in Elective2">
+         		 	<input type="checkbox" name="elec2" class='elec2' :value='elec.cname'>[[elec.cname]]<br>
+      				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row sem6">
+		<div class="col-md-6 elective1">
+			<span>Elective 3</span><br/>
+			<ul style="list-style-type: none;">
+				<li v-for="elec in Elective1">
+          			<input type="checkbox" name="elec3" class='elec3' :value='elec.cname'>[[elec.cname]]<br>
+      				</li>
+			</ul>
+		</div>
+		<div class="col-md-6 elective2">
+			<span>Elective 4</span><br/>
+			<ul style="list-style-type: none;">
+				<li v-for="elec in Elective2">
+         		 	<input type="checkbox" name="elec4" class='elec4' :value='elec.cname'>[[elec.cname]]<br>
+      				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row sem7">
+		<div class="col-md-6 elective1">
+			<span>Elective 5</span><br/>
+			<ul style="list-style-type: none;">
+				<li v-for="elec in Elective1">
+          			<input type="checkbox" name="elec5" class='elec5' :value='elec.cname'>[[elec.cname]]<br>
+      				</li>
+			</ul>
+		</div>
+		<div class="col-md-6 elective2">
+			<span>Elective 6</span><br/>
+			<ul style="list-style-type: none;">
+				<li v-for="elec in Elective2">
+         		 	<input type="checkbox" name="elec6" class='elec6' :value='elec.cname'>[[elec.cname]]<br>
+      				</li>
+			</ul>
 		</div>
 	</div>
 	<input type="button" name="next" class="elecNext next btn" value="Next"/>
@@ -149,6 +189,7 @@
   </elective-list>
   <fieldset class="col-md-8 interests">
   <span>Select Your Interests</span><br>
+	<input type="text" size="30" id="search" placeholder="Search an interest"/>
 	<input type="button" name="next" class="interestNext next btn" value="Next"/>
   </fieldset>
 </form>

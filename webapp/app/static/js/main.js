@@ -22,6 +22,11 @@ var electiveList = Vue.component('elective-list',{
   {id:2, cname:"Advanced Database Management Systems",}, 
   {id:3, cname:"Big Data",},
   {id:4, cname:"Multimedia  Computing",},
+  {id:5, cname:"XML Technologies"},],
+	Elective2: [{id:1, cname:"Advanced Algorithms",}, 
+  {id:2, cname:"Advanced Database Management Systems",}, 
+  {id:3, cname:"Big Data",},
+  {id:4, cname:"Multimedia  Computing",},
   {id:5, cname:"XML Technologies"},]
   }
   },
