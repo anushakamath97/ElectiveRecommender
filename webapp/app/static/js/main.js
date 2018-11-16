@@ -14,40 +14,54 @@ var studentDetailsComp=Vue.component('student-details',{
 });
 
 var electiveList = Vue.component('elective-list',{
-	// template : "<li> {{elec}} </li>",
-	// props : ['elec']
   data:function(){
     return{
-      Elective1: [{id:1, cname:"Advanced Algorithms",}, 
-  {id:2, cname:"Advanced Database Management Systems",}, 
-  {id:3, cname:"Big Data",},
-  {id:4, cname:"Multimedia  Computing",},
-  {id:5, cname:"XML Technologies"},],
-	Elective2: [{id:1, cname:"Advanced Algorithms",}, 
-  {id:2, cname:"Advanced Database Management Systems",}, 
-  {id:3, cname:"Big Data",},
-  {id:4, cname:"Multimedia  Computing",},
-  {id:5, cname:"XML Technologies"},]
-  }
+     //      Elective1: [{id:1, cname:"Advanced Algorithms",}, 
+     //  {id:2, cname:"Advanced Database Management Systems",}, 
+     //  {id:3, cname:"Big Data",},
+     //  {id:4, cname:"Multimedia  Computing",},
+     //  {id:5, cname:"XML Technologies"},],
+    	// Elective2: [{id:1, cname:"Advanced Algorithms",}, 
+     //  {id:2, cname:"Advanced Database Management Systems",}, 
+     //  {id:3, cname:"Big Data",},
+     //  {id:4, cname:"Multimedia  Computing",},
+     //  {id:5, cname:"XML Technologies"},],
+      Elective1:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
+      Elective2:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
+      Elective3:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
+      Elective4:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
+      Elective5:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
+      Elective6:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
+    }
   },
   methods:{
     getElectiveNames:function(elecNumber){
       this.$http.get('/elective/getElectiveNames',{elecNumber})
           .then((response) => {
-            console.log(response.data);
-            for(var i=0;i<response.data['elecName'].length;i++){
-              this.Elective1[i].cname=response.data['elecName'][0][i];
-              this.Elective2[i].cname=response.data['elecName'][1][i];
+            if(elecNumber==1){
+              for(var i=0;i<response.data['elecName'][0].length;i++){
+                this.Elective1[i].cname=response.data['elecName'][0][i];
+                this.Elective2[i].cname=response.data['elecName'][1][i];
+              }
+            }
+            else if(elecNumber==3){
+              for(var i=0;i<response.data['elecName'][0].length;i++){
+                this.Elective3[i].cname=response.data['elecName'][2][i];
+                this.Elective4[i].cname=response.data['elecName'][3][i];
+              }
+            }
+            else if(elecNumber==5){
+              for(var i=0;i<response.data['elecName'][0].length;i++){
+                this.Elective5[i].cname=response.data['elecName'][0][i];
+                this.Elective6[i].cname=response.data['elecName'][1][i];
+              }
             }
           })
           .catch((err) => {
             console.log("error",err);
           })
     }
-  },
-    mounted(){
-      this.getElectiveNames(1);
-    }
+  }
 });
 
 var recoResultComp=Vue.component('reco-result',{

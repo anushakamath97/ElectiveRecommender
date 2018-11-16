@@ -16,6 +16,7 @@ $('.specNext').click(function(){
 		$curr_page = 5;
 		prevElectiveList = [];
 		elective_no = 1;
+		vue.$refs.student_details.$refs.elective_list.getElectiveNames(elective_no);
 	}
 	else if($('#semester').val() == 5)
 		$('.interests').delay(2000).fadeIn(1000);
@@ -39,6 +40,7 @@ $('.elecNext').click(function(){
 	prevElectiveList.push(document.querySelector('.elec'+elective_no+':checked').value);
 	prevElectiveList.push(document.querySelector('.elec'+(elective_no+1)+':checked').value);
 	elective_no += 2;
+	vue.$refs.student_details.$refs.elective_list.getElectiveNames(elective_no);
 	if($curr_page != ($sem-1))
 	{	
 		$('.sem'+$curr_page).fadeOut();

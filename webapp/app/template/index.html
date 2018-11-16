@@ -128,7 +128,7 @@
   <br><br><br>
   <input type="button" name="next" class="specNext next btn" value="Next"/>
   </fieldset>
-  <elective-list inline-template refs="elective_list">
+  <elective-list inline-template ref="elective_list">
   <fieldset class="col-md-8 prevElectives">
   <span>Select Your Previous Electives</span><br>
 	<div class="row sem5">
@@ -153,7 +153,7 @@
 		<div class="col-md-6 elective1">
 			<span>Elective 3</span><br/>
 			<ul style="list-style-type: none;">
-				<li v-for="elec in Elective1">
+				<li v-for="elec in Elective3">
           			<input type="checkbox" name="elec3" class='elec3' :value='elec.cname'>[[elec.cname]]<br>
       				</li>
 			</ul>
@@ -161,7 +161,7 @@
 		<div class="col-md-6 elective2">
 			<span>Elective 4</span><br/>
 			<ul style="list-style-type: none;">
-				<li v-for="elec in Elective2">
+				<li v-for="elec in Elective4">
          		 	<input type="checkbox" name="elec4" class='elec4' :value='elec.cname'>[[elec.cname]]<br>
       				</li>
 			</ul>
@@ -171,7 +171,7 @@
 		<div class="col-md-6 elective1">
 			<span>Elective 5</span><br/>
 			<ul style="list-style-type: none;">
-				<li v-for="elec in Elective1">
+				<li v-for="elec in Elective5">
           			<input type="checkbox" name="elec5" class='elec5' :value='elec.cname'>[[elec.cname]]<br>
       				</li>
 			</ul>
@@ -179,7 +179,7 @@
 		<div class="col-md-6 elective2">
 			<span>Elective 6</span><br/>
 			<ul style="list-style-type: none;">
-				<li v-for="elec in Elective2">
+				<li v-for="elec in Elective6">
          		 	<input type="checkbox" name="elec6" class='elec6' :value='elec.cname'>[[elec.cname]]<br>
       				</li>
 			</ul>
@@ -281,8 +281,8 @@
       <div id="postItDetails">
         <h2>[[electiveName.firstPool1]]</h2>
         <span>Description : [[electiveData.desc]]</span><br><br>
-        <span>Teacher(s) : [[electiveData.teacher]]</span><br><br>
-        <span>Specialization(s) : [[electiveData.special]]</span><br><br>
+        <span>Teacher(s) : [[electiveData.teacher]]</span><br>
+        <span>Specialization(s) : [[electiveData.special]]</span><br>
         <span>Prerequisite : [[electiveData.prereq]]</span><br>
       </div>
       <input type="button" name="back" class="back btn" value="Back"/>
@@ -294,8 +294,8 @@
       <div id="postItDetails">
         <h2>[[electiveName.secondPool1]]</h2>
         <span>Description : [[electiveData.desc]]</span><br><br>
-        <span>Teacher(s) : [[electiveData.teacher]]</span><br><br>
-        <span>Specialization(s) : [[electiveData.special]]</span><br><br>
+        <span>Teacher(s) : [[electiveData.teacher]]</span><br>
+        <span>Specialization(s) : [[electiveData.special]]</span><br>
         <span>Prerequisite : [[electiveData.prereq]]</span><br>
       </div>
       <input type="button" name="back" class="back btn" value="Back"/>
@@ -307,8 +307,8 @@
       <div id="postItDetails">
         <h2>[[electiveName.firstPool2]]</h2>
         <span>Description : [[electiveData.desc]]</span><br><br>
-        <span>Teacher(s) : [[electiveData.teacher]]</span><br><br>
-        <span>Specialization(s) : [[electiveData.special]]</span><br><br>
+        <span>Teacher(s) : [[electiveData.teacher]]</span><br>
+        <span>Specialization(s) : [[electiveData.special]]</span><br>
         <span>Prerequisite : [[electiveData.prereq]]</span><br>
       </div>
       <input type="button" name="back" class="back btn" value="Back"/>
