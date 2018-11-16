@@ -8,6 +8,7 @@ showResults=function(){
 	$('.resultSection').delay(1000).fadeIn(1500);
 }
 
+
 $('.specNext').click(function(){
 	$('.specialisation').fadeOut(1000);
 	if($('#semester').val() > 5 && $('#semester').val() < 9)
@@ -31,29 +32,34 @@ $("input:checkbox").on("click", function(){
 	}
 	else
 		$box.prop("checked",false);
+	
 });
 
 
 
+
 $('.elecNext').click(function(){
-	var $sem = $('#semester').val();
-	prevElectiveList.push(document.querySelector('.elec'+elective_no+':checked').value);
-	prevElectiveList.push(document.querySelector('.elec'+(elective_no+1)+':checked').value);
-	elective_no += 2;
-	vue.$refs.student_details.$refs.elective_list.getElectiveNames(elective_no);
-	if($curr_page != ($sem-1))
-	{	
-		$('.sem'+$curr_page).fadeOut();
-		$('.sem'+($curr_page +1)).fadeIn(1500);
-		$curr_page = $curr_page + 1;
+	var pool1Checked = $("input:checkbox[name=elec"+elective_no+"]").is(":checked");
+	var pool2Checked = $("input:checkbox[name=elec"+(elective_no+1)+"]").is(":checked");
+	if (pool1Checked && pool2Checked){
+		var $sem = $('#semester').val();
+		prevElectiveList.push(document.querySelector('.elec'+elective_no+':checked').value);
+		prevElectiveList.push(document.querySelector('.elec'+(elective_no+1)+':checked').value);
+		elective_no += 2;
+		vue.$refs.student_details.$refs.elective_list.getElectiveNames(elective_no);
+		if($curr_page != ($sem-1))
+		{	
+			$('.sem'+$curr_page).fadeOut();
+			$('.sem'+($curr_page +1)).fadeIn(1500);
+			$curr_page = $curr_page + 1;
+		}
+		else 
+		{
+			$('.sem'+$curr_page).fadeOut();
+			$('.prevElectives').fadeOut();
+			$('.interests').delay(1000).fadeIn(1500);
+		}
 	}
-	else 
-	{
-		$('.sem'+$curr_page).fadeOut();
-		$('.prevElectives').fadeOut();
-		$('.interests').delay(1000).fadeIn(1500);
-	}
-	console.log(prevElectiveList);
 });
 
 $('.interestNext').click(function(){

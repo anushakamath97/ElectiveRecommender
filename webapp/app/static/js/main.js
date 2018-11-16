@@ -16,22 +16,12 @@ var studentDetailsComp=Vue.component('student-details',{
 var electiveList = Vue.component('elective-list',{
   data:function(){
     return{
-     //      Elective1: [{id:1, cname:"Advanced Algorithms",}, 
-     //  {id:2, cname:"Advanced Database Management Systems",}, 
-     //  {id:3, cname:"Big Data",},
-     //  {id:4, cname:"Multimedia  Computing",},
-     //  {id:5, cname:"XML Technologies"},],
-    	// Elective2: [{id:1, cname:"Advanced Algorithms",}, 
-     //  {id:2, cname:"Advanced Database Management Systems",}, 
-     //  {id:3, cname:"Big Data",},
-     //  {id:4, cname:"Multimedia  Computing",},
-     //  {id:5, cname:"XML Technologies"},],
       Elective1:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
       Elective2:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
-      Elective3:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
-      Elective4:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
-      Elective5:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
-      Elective6:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
+      Elective3:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
+      Elective4:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
+      Elective5:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
+      Elective6:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
     }
   },
   methods:{
@@ -39,22 +29,28 @@ var electiveList = Vue.component('elective-list',{
       this.$http.get('/elective/getElectiveNames',{elecNumber})
           .then((response) => {
             if(elecNumber==1){
-              for(var i=0;i<response.data['elecName'][0].length;i++){
-                this.Elective1[i].cname=response.data['elecName'][0][i];
-                this.Elective2[i].cname=response.data['elecName'][1][i];
-              }
+              for(var i=0;i<response.data['elecName'][0].length;i++)
+                this.Elective1[i].cname = response.data['elecName'][0][i];
+
+	      for(var i=0;i<response.data['elecName'][1].length;i++)
+                this.Elective2[i].cname = response.data['elecName'][1][i];
+              
             }
             else if(elecNumber==3){
-              for(var i=0;i<response.data['elecName'][0].length;i++){
-                this.Elective3[i].cname=response.data['elecName'][2][i];
-                this.Elective4[i].cname=response.data['elecName'][3][i];
-              }
+              for(var i=0;i<response.data['elecName'][2].length;i++)
+                this.Elective3[i].cname = response.data['elecName'][2][i];
+
+	      for(var i=0;i<response.data['elecName'][3].length;i++)
+                this.Elective4[i].cname = response.data['elecName'][3][i];
+           
             }
             else if(elecNumber==5){
-              for(var i=0;i<response.data['elecName'][0].length;i++){
-                this.Elective5[i].cname=response.data['elecName'][0][i];
-                this.Elective6[i].cname=response.data['elecName'][1][i];
-              }
+              for(var i=0;i<response.data['elecName'][4].length;i++)
+                this.Elective5[i].cname = response.data['elecName'][4][i];
+
+	      for(var i=0;i<response.data['elecName'][5].length;i++)
+                this.Elective6[i].cname = response.data['elecName'][5][i];
+              
             }
           })
           .catch((err) => {
