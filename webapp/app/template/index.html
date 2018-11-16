@@ -125,6 +125,7 @@
   <input type="radio" name="Specialisation" value="DataScience"> Data Science<br>
   <input type="radio" name="Specialisation" value="systemAndCore"> System and Core Computing<br>
   <input type="radio" name="Specialisation" value="none" checked> None
+  <br><br><br>
   <input type="button" name="next" class="specNext next btn" value="Next"/>
   </fieldset>
   <elective-list inline-template refs="elective_list">
@@ -274,34 +275,55 @@
       <span>Pool 2</span>
     </div>
     <div id="postIt1">
-      <span>[[firstPool1]]</span>
+      <span>[[electiveName.firstPool1]]</span>
     </div>
     <div id="postIt1Open">
       <div id="postItDetails">
-        <h2>[[firstPool1]]</h2>
-        <span>Description : [[firstPool1]]</span><br>
-        <span>Teacher(s) : [[firstPool1]]</span><br>
-        <span>Specialization(s) : [[firstPool1]]</span><br>
-        <span>Prerequisite : [[firstPool1]]</span><br>
+        <h2>[[electiveName.firstPool1]]</h2>
+        <span>Description : [[electiveData.desc]]</span><br><br>
+        <span>Teacher(s) : [[electiveData.teacher]]</span><br><br>
+        <span>Specialization(s) : [[electiveData.special]]</span><br><br>
+        <span>Prerequisite : [[electiveData.prereq]]</span><br>
       </div>
       <input type="button" name="back" class="back btn" value="Back"/>
     </div>
      <div id="postIt2">
-      <span>[[secondPool1]]</span>
+      <span>[[electiveName.secondPool1]]</span>
     </div>
     <div id="postIt2Open">
+      <div id="postItDetails">
+        <h2>[[electiveName.secondPool1]]</h2>
+        <span>Description : [[electiveData.desc]]</span><br><br>
+        <span>Teacher(s) : [[electiveData.teacher]]</span><br><br>
+        <span>Specialization(s) : [[electiveData.special]]</span><br><br>
+        <span>Prerequisite : [[electiveData.prereq]]</span><br>
+      </div>
       <input type="button" name="back" class="back btn" value="Back"/>
     </div>
      <div id="postIt3">
-      <span>[[firstPool2]]</span>
+      <span>[[electiveName.firstPool2]]</span>
     </div>
     <div id="postIt3Open">
+      <div id="postItDetails">
+        <h2>[[electiveName.firstPool2]]</h2>
+        <span>Description : [[electiveData.desc]]</span><br><br>
+        <span>Teacher(s) : [[electiveData.teacher]]</span><br><br>
+        <span>Specialization(s) : [[electiveData.special]]</span><br><br>
+        <span>Prerequisite : [[electiveData.prereq]]</span><br>
+      </div>
       <input type="button" name="back" class="back btn" value="Back"/>
     </div>
      <div id="postIt4">
-      <span>[[secondPool2]]</span>
+      <span>[[electiveName.secondPool2]]</span>
     </div>
     <div id="postIt4Open">
+      <div id="postItDetails">
+        <h2>[[electiveName.secondPool2]]</h2>
+        <span>Description : [[electiveData.desc]]</span><br><br>
+        <span>Teacher(s) : [[electiveData.teacher]]</span><br>
+        <span>Specialization(s) : [[electiveData.special]]</span><br>
+        <span>Prerequisite : [[electiveData.prereq]]</span><br>
+      </div>
       <input type="button" name="back" class="back btn" value="Back"/>
     </div>
     </section>

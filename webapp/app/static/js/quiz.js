@@ -16,7 +16,6 @@ $('.specNext').click(function(){
 		$curr_page = 5;
 		prevElectiveList = [];
 		elective_no = 1;
-
 	}
 	else if($('#semester').val() == 5)
 		$('.interests').delay(2000).fadeIn(1000);
@@ -63,9 +62,9 @@ $('.interestNext').click(function(){
 $('.meterNext').click(function(){
 	$('.weightage').fadeOut();
 	$('.recoLoad').fadeIn(1500);
-	$('.recoLoad').delay(8000).fadeOut(500);
+	$('.recoLoad').delay(4000).fadeOut(500);
 	// $('.recoResult').delay(8500).fadeIn(500).done(showResults());
-	$.when($('.recoResult').delay(8500).fadeIn(500))
+	$.when($('.recoResult').delay(4500).fadeIn(500))
                                .done(function() {
    			 showResults();
 			});

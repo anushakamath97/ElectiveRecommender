@@ -79,7 +79,7 @@
 }
 
 #postIt1:hover{
-	transform: scale(1.25);
+	transform: scale(1.15);
 	cursor: pointer;
 }
 
@@ -98,7 +98,7 @@
 }
 
 #postIt2:hover{
-	transform: scale(1.25);
+	transform: scale(1.15);
 	cursor: pointer;
 }
 
@@ -116,7 +116,7 @@
 }
 
 #postIt3:hover{
-	transform: scale(1.25);
+	transform: scale(1.15);
 	cursor: pointer;
 }
 
@@ -134,7 +134,7 @@
 }
 
 #postIt4:hover{
-	transform: scale(1.25);
+	transform: scale(1.15);
 	cursor: pointer;
 }
 
@@ -207,15 +207,16 @@
 }
 
 #postItDetails{
-	left: 30%;
+	left: 25%;
 	top:20%;
 	position: absolute;
 	color: #000000;
 	font-size: 1.5em;
+  width: 50%;
 }
 
 #postItDetails>h2{
-	font-size: 2em;
+	font-size: 2.5em;
 	text-align: center;
 }
 
