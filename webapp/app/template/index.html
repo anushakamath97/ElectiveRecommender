@@ -116,7 +116,7 @@
   <input type="text" name="usn" placeholder="USN" v-model="studentDetails.usn" />
   <span v-cloak v-if="studentDetails.usn!=null && studentDetails.usn.length!=12" class="text-danger">* Enter valid USN</span><br>
   <span>SEMESTER</span>
-  <input type="text" name="sem" placeholder="SEMESTER" value="7" id="semester" disabled />
+  <input type="text" name="sem" placeholder="SEMESTER" value="5" id="semester" disabled />
   <input type="button" name="next" class="usnNext next btn" value="Next" :disabled="studentDetails.usn==null || studentDetails.usn.length!=12"/>
   </fieldset>
   <fieldset class="col-md-8 specialisation">
@@ -188,11 +188,24 @@
 	<input type="button" name="next" class="elecNext next btn"  value="Next"/>
   </fieldset>
   </elective-list>
+
+  <interests-list inline-template ref="interests_list">
   <fieldset class="col-md-8 interests">
   <span>Select Your Interests</span><br>
 	<input type="text" size="30" id="search" placeholder="Search an interest"/>
+	<div id="selected">
+		<span> You can select [[noOfSelected.count]] more interests </span>
+		<input type="button" class="intrOption" v-for="intrs in list_interests" :value="[[intrs]]" v-on:click="removeInterest(event)"/>&nbsp&nbsp
+	</div><hr>
+	<div id="options">
+		<span> Some Popular Options</span><br>
+		<input type="button" class="intrOption" v-for="intrs in interests_show" :value="[[intrs]]" v-on:click="addInterest(event)"/>&nbsp&nbsp
+	</div>
 	<input type="button" name="next" class="interestNext next btn" value="Next"/>
   </fieldset>
+  </interests-list>
+
+
 </form>
 </student-details>
 </section>
