@@ -20,7 +20,7 @@ def elective(request):
 class electiveDataView(APIView):
 	def get(self,request):
 		print("request elective",request.GET['reqElective'])
-		elec_data=pd.read_csv('app/static/data/electives_data.csv')
+		elec_data=pd.read_csv('app/static/data/electives_data1.csv')
 		elective_df=elec_data[elec_data['Course_name']==request.GET['reqElective']]
 		data={"desc":elective_df['Description'].iloc[0],"teacher":elective_df['Teacher'].iloc[0],"special":elective_df['Specialization'].iloc[0],"prereq":elective_df['Prerequisites'].iloc[0]}
 		print(data)	

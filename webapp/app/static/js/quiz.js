@@ -50,7 +50,7 @@ $('.elecNext').click(function(){
 		if($curr_page != ($sem-1))
 		{	
 			$('.sem'+$curr_page).fadeOut();
-			$('.sem'+($curr_page +1)).fadeIn(1500);
+			$('.sem'+($curr_page +1)).delay(1000).fadeIn(1500);
 			$curr_page = $curr_page + 1;
 		}
 		else 

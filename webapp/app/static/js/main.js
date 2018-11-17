@@ -79,10 +79,10 @@ var recoResultComp=Vue.component('reco-result',{
   },
   methods:{
     getRecommendation:function(){
-      this.electiveName.firstPool1="Advanced Database Management Systems";
-      this.electiveName.firstPool2="Computer Graphics and Visualization";
-      this.electiveName.secondPool1="Multimedia  Computing";
-      this.electiveName.secondPool2="XML Technologies";
+      this.electiveName.firstPool1="Multimedia  Computing";
+      this.electiveName.firstPool2="XML Technologies";
+      this.electiveName.secondPool1="Design Patterns";
+      this.electiveName.secondPool2="Autonomous Mobile Robotics";
       console.log("reco");
     },
     getElectiveData:function(reqElective){
