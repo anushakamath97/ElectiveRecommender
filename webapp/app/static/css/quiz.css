@@ -11,6 +11,17 @@
   display: none;
 }
 
+#options{
+	display: inline;
+	float: left;
+}
+
+.intrOption{
+	border-radius: 1.5em;
+	background-color: #f2f2f2;
+	
+}
+
 .usnDiv{
 	font-size: 3em;
 	top: 31%;

@@ -60,6 +60,30 @@ var electiveList = Vue.component('elective-list',{
   }
 });
 
+
+var interestsList = Vue.component('interests-list',{
+	data : function(){
+		return {
+			list_interests : [],
+			interests_show : ['Machine Learning','Operating Systems','Cloud Computing'],
+			noOfSelected : {count:10},
+		}
+	},
+	methods : {
+		addInterest: function(event){
+			this.list_interests.push(event.target.value);
+			this.interests_show.splice(this.interests_show.indexOf(event.target.value),1);
+			this.noOfSelected.count -= 1;
+		},
+		removeInterest: function(event){
+			this.interests_show.push(event.target.value);
+			this.list_interests.splice(this.list_interests.indexOf(event.target.value),1);
+			//this.interests_show = this.interests_show.slice(0,4);
+			this.noOfSelected.count += 1;
+		}
+	}
+});
+
 var recoResultComp=Vue.component('reco-result',{
   data:function(){
     return{
@@ -113,6 +137,7 @@ var vue = new Vue({
     'student-details':studentDetailsComp,
     'reco-result':recoResultComp,
     'elective-list':electiveList,
+    'interests-list':interestsList,
   },
   methods: {
   },
