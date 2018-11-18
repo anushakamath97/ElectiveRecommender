@@ -67,20 +67,109 @@ var interestsList = Vue.component('interests-list',{
 			list_interests : [],
 			interests_show : ['Machine Learning','Operating Systems','Cloud Computing'],
 			noOfSelected : {count:10},
+			containerdiv : null,
+			timer: null,
+			search_: null,
 		}
 	},
 	methods : {
 		addInterest: function(event){
-			this.list_interests.push(event.target.value);
-			this.interests_show.splice(this.interests_show.indexOf(event.target.value),1);
-			this.noOfSelected.count -= 1;
+			if(this.noOfSelected.count == 0)
+				return;
+			if(this.list_interests.indexOf(event.target.value) == -1)
+			{	this.list_interests.push(event.target.value);
+				this.noOfSelected.count -= 1;
+			}
+			//this.interests_show.splice(this.interests_show.indexOf(event.target.value),1);
+			
 		},
 		removeInterest: function(event){
-			this.interests_show.push(event.target.value);
+			//this.interests_show.push(event.target.value);
 			this.list_interests.splice(this.list_interests.indexOf(event.target.value),1);
 			//this.interests_show = this.interests_show.slice(0,4);
 			this.noOfSelected.count += 1;
-		}
+		},
+		getInterests: function(event)
+		{
+			//If a function is already registered, cancel it and setTimeout
+		      if(this.timer)
+		      {
+			clearTimeout(this.timer);
+		      }
+
+		      //Go to the server in 1 sec
+		       this.timer = setTimeout(this.fetchInterests,1000);
+		},
+		fetchInterests: function(){
+			
+    			this.search_ = document.getElementById("search");
+			this.containerdiv = document.getElementById("container");
+			if(this.search_.value=='')
+			{
+				this.containerdiv.innerHTML = "";
+				this.containerdiv.style.display = "none";
+				return;
+			}
+			else {
+
+      				mykey = "/elective/getInterests"+this.search_.value;
+				if(localStorage[mykey])
+				{
+					//show from cache
+					cachedInterests = JSON.parse(localStorage[mykey])['interestNames'];
+					console.log("from cache");
+					//Show from the cached
+					this.populateInterests(cachedInterests);
+				}
+				else {
+					var prefix = this.search_.value;
+					//No option but to visit server for the movies list
+					this.$http.get('/elective/getInterests',{prefix})
+						.then((response) => {
+						if(response.readyState == 4 && response.status == 200)
+						{
+							//We expect a JSON as return value
+							options = response.data['interestNames'];
+							if(options.length == 0)
+							{
+								//Clean up the containerdiv. It should be empty
+								this.containerdiv.innerHTML = "OOPS!! no such option :(";
+								//this.containerdiv.style.display = "none";
+
+
+							}
+							else { //we got some intersts
+
+								this.populateInterests(options);
+								//Now cache the movies in localStorage
+								localStorage[mykey] = response.responseText;
+							}
+    						}
+					}).catch((err) => {
+						console.log("error",err);
+					});
+      				}
+    			}
+ 		 },
+		populateInterests : function(options)
+		{
+			//First empty the list and populate it afresh
+			this.containerdiv.innerHTML = "";
+
+			for (var i = 0; i < options.length; i++) {
+				newdiv  = document.createElement('input');
+				newdiv.type = "button";
+				newdiv.value = options[i];
+				newdiv.className = "intrOption";
+
+          			//Add it to the conttainer
+          			this.containerdiv.appendChild(newdiv);
+
+          			//something more
+          			newdiv.onclick = this.addInterest;
+        		}
+			this.containerdiv.style.display = "block";
+      		}
 	}
 });
 

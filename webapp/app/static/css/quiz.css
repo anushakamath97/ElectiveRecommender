@@ -11,7 +11,7 @@
   display: none;
 }
 
-#options{
+#options, #container{
 	display: inline;
 	float: left;
 }
@@ -101,7 +101,7 @@ input[type="checkbox"]{
 
 .interests{
 	display: none;
-	font-size: 2em;
+	font-size: 1.5em;
 	top: 31%;
 	color: #000000;
     transition: 0.6s;

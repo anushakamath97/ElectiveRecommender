@@ -192,9 +192,10 @@
   <interests-list inline-template ref="interests_list">
   <fieldset class="col-md-8 interests">
   <span>Select Your Interests</span><br>
-	<input type="text" size="30" id="search" placeholder="Search an interest"/>
+	<input type="text" size="30" id="search" placeholder="Search an interest" v-on:keyup="getInterests(event)"/><br>
+	<div id="container"></div><br>
 	<div id="selected">
-		<span> You can select [[noOfSelected.count]] more interests </span>
+		<span> You can select [[noOfSelected.count]] more interests </span><br>
 		<input type="button" class="intrOption" v-for="intrs in list_interests" :value="[[intrs]]" v-on:click="removeInterest(event)"/>&nbsp&nbsp
 	</div><hr>
 	<div id="options">
