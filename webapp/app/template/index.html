@@ -120,7 +120,7 @@
   <input type="button" name="next" class="usnNext next btn" value="Next" :disabled="studentDetails.usn==null || studentDetails.usn.length!=12"/>
   </fieldset>
   <fieldset class="col-md-8 specialisation">
-  <span>Select Your Desired Specialisation</span><br>
+  <span id="specHead">Select Your Desired Specialisation</span><br><br>
   <input type="radio" name="Specialisation" value="AlgoAndComp" > Algorithms and Computing Models<br>
   <input type="radio" name="Specialisation" value="DataScience"> Data Science<br>
   <input type="radio" name="Specialisation" value="systemAndCore"> System and Core Computing<br>
@@ -130,10 +130,10 @@
   </fieldset>
   <elective-list inline-template ref="elective_list">
   <fieldset class="col-md-8 prevElectives">
-  <span>Select Your Previous Electives</span><br>
+  <span id="prevHead">Select Your Previous Electives</span><br><br>
 	<div class="row sem5">
 		<div class="col-md-6 elective1">
-			<span>Elective 1</span><br/>
+			<span class="elecHead">Elective 5a</span><br/><br/>
 			<ul style="list-style-type: none;">
 				<li v-for="elec in Elective1">
           			<input type="checkbox" name="elec1" class='elec1' :value='elec.cname'/>[[elec.cname]]<br>
@@ -141,7 +141,7 @@
 			</ul>
 		</div>
 		<div class="col-md-6 elective2">
-			<span>Elective 2</span><br/>
+			<span class="elecHead">Elective 5b</span><br/><br/>
 			<ul style="list-style-type: none;">
 				<li v-for="elec in Elective2">
          		 	<input type="checkbox" name="elec2" class='elec2' :value='elec.cname'/>[[elec.cname]]<br>
@@ -151,7 +151,7 @@
 	</div>
 	<div class="row sem6">
 		<div class="col-md-6 elective1">
-			<span>Elective 3</span><br/>
+			<span class="elecHead">Elective 6a</span><br/><br/>
 			<ul style="list-style-type: none;">
 				<li v-for="elec in Elective3">
           			<input type="checkbox" name="elec3" class='elec3' :value='elec.cname'>[[elec.cname]]<br>
@@ -159,7 +159,7 @@
 			</ul>
 		</div>
 		<div class="col-md-6 elective2">
-			<span>Elective 4</span><br/>
+			<span class="elecHead">Elective 6b</span><br/><br/>
 			<ul style="list-style-type: none;">
 				<li v-for="elec in Elective4">
          		 	<input type="checkbox" name="elec4" class='elec4' :value='elec.cname'>[[elec.cname]]<br>
@@ -169,7 +169,7 @@
 	</div>
 	<div class="row sem7">
 		<div class="col-md-6 elective1">
-			<span>Elective 5</span><br/>
+			<span class="elecHead">Elective 7a</span><br/><br/>
 			<ul style="list-style-type: none;">
 				<li v-for="elec in Elective5">
           			<input type="checkbox" name="elec5" class='elec5' :value='elec.cname'>[[elec.cname]]<br>
@@ -177,7 +177,7 @@
 			</ul>
 		</div>
 		<div class="col-md-6 elective2">
-			<span>Elective 6</span><br/>
+			<span class="elecHead">Elective 7b</span><br/><br/>
 			<ul style="list-style-type: none;">
 				<li v-for="elec in Elective6">
          		 	<input type="checkbox" name="elec6" class='elec6' :value='elec.cname'>[[elec.cname]]<br>
@@ -258,7 +258,7 @@
     <h3 id="meterHead2">Specialisation</h3>
     <label id="lbl2" id="value2" for="special">0%</label>
     </div>
-    <h3 id="weightageHead">Adjust the slider based on your weightage of importance</h3>
+    <h3 id="weightageHead">Adjust the slider based on your weightage of importance</h3><br>
     <input type="button" name="next" class="meterNext btn" value="Next"/>
 </section>
 <section class="recoLoad">

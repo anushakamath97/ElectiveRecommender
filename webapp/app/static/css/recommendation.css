@@ -46,6 +46,7 @@
 	color: #ffffff;
 	left:5%;
 	top:5%;
+  font-size: 4em;
 }
 #pool1{
 	color: #ffffff;
@@ -66,12 +67,12 @@
 	position: absolute; 
 }
 #postIt1{
-	width: 18%;
+	width: 14%;
 	height: 25%;
 	color: #000000;
 	font-size: 2em;
-	top: 15%;
-	left: 57%;
+	top: 18%;
+	left: 58%;
 	padding-top: 2%;
 	text-align: center;
 	position: absolute;
@@ -79,18 +80,18 @@
 }
 
 #postIt1:hover{
-	transform: scale(1.15);
+	transform: scale(1.12);
 	cursor: pointer;
 }
 
 
 #postIt2{
-	width: 18%;
+	width: 14%;
 	height: 25%;
 	color: #000000;
 	font-size: 2em;
 	top: 47%;
-	left: 57%;
+	left: 58%;
 	padding-top: 2%;
 	text-align: center;
 	position: absolute;
@@ -98,17 +99,17 @@
 }
 
 #postIt2:hover{
-	transform: scale(1.15);
+	transform: scale(1.12);
 	cursor: pointer;
 }
 
 #postIt3{
-	width: 18%;
+	width: 14%;
 	height: 25%;
 	color: #000000;
 	font-size: 2em;
-	top: 15%;
-	left: 78%;
+	top: 18%;
+	left: 79%;
 	padding-top: 2%;
 	text-align: center;
 	position: absolute;
@@ -116,17 +117,17 @@
 }
 
 #postIt3:hover{
-	transform: scale(1.15);
+	transform: scale(1.12);
 	cursor: pointer;
 }
 
 #postIt4{
-	width: 18%;
+	width: 14%;
 	height: 25%;
 	color: #000000;
 	font-size: 2em;
 	top: 47%;
-	left: 78%;
+	left: 79%;
 	padding-top: 2%;
 	text-align: center;
 	position: absolute;
@@ -134,7 +135,7 @@
 }
 
 #postIt4:hover{
-	transform: scale(1.15);
+	transform: scale(1.12);
 	cursor: pointer;
 }
 
