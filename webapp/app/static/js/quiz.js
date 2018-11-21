@@ -10,7 +10,9 @@ showResults=function(){
 
 
 $('.specNext').click(function(){
-	$('.specialisation').fadeOut(1000);
+	$('.specialisation').fadeOut(1000,function(){
+		$('.home').css('background-image', 'url(../static/images/back.jpg)');	
+	});
 	if($('#semester').val() > 5 && $('#semester').val() < 9)
 	{	$('.prevElectives').delay(2000).fadeIn(1000);
 		$('.sem5').delay(2000).fadeIn(1000);

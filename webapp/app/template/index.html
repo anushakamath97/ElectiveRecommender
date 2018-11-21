@@ -112,24 +112,25 @@
 <student-details inline-template ref="student_details">
 <form>
   <fieldset class="col-md-8 usnDiv">
+  <div id="nextButton"><input type="button" name="next" class="usnNext next btn" value="Next" :disabled="studentDetails.usn==null || studentDetails.usn.length!=12"/></div>
   <span>ENTER USN</span>
   <input type="text" name="usn" placeholder="USN" v-model="studentDetails.usn" />
   <span v-cloak v-if="studentDetails.usn!=null && studentDetails.usn.length!=12" class="text-danger">* Enter valid USN</span><br>
   <span>SEMESTER</span>
   <input type="text" name="sem" placeholder="SEMESTER" value="5" id="semester" disabled />
-  <input type="button" name="next" class="usnNext next btn" value="Next" :disabled="studentDetails.usn==null || studentDetails.usn.length!=12"/>
   </fieldset>
   <fieldset class="col-md-8 specialisation">
+  <div id="nextButton"><input type="button" name="next" class="next specNext btn" value="Next"/></div>
   <span id="specHead">Select Your Desired Specialisation</span><br><br>
   <input type="radio" name="Specialisation" value="AlgoAndComp" > Algorithms and Computing Models<br>
   <input type="radio" name="Specialisation" value="DataScience"> Data Science<br>
   <input type="radio" name="Specialisation" value="systemAndCore"> System and Core Computing<br>
   <input type="radio" name="Specialisation" value="none" checked> None
   <br><br><br>
-  <input type="button" name="next" class="specNext next btn" value="Next"/>
   </fieldset>
   <elective-list inline-template ref="elective_list">
   <fieldset class="col-md-8 prevElectives">
+  <div id="nextButton"><input type="button" name="next" class="elecNext next btn"  value="Next"/></div>
   <span id="prevHead">Select Your Previous Electives</span><br><br>
 	<div class="row sem5">
 		<div class="col-md-6 elective1">
@@ -185,28 +186,27 @@
 			</ul>
 		</div>
 	</div>
-	<input type="button" name="next" class="elecNext next btn"  value="Next"/>
   </fieldset>
   </elective-list>
 
   <interests-list inline-template ref="interests_list">
   <fieldset class="col-md-8 interests">
+  <div id="nextButton"><input type="button" name="next" class="interestNext next btn" value="Next"/></div>
+  <div id="interestContent">
   <span>Select Your Interests</span><br>
-	<input type="text" size="30" id="search" placeholder="Search an interest" v-on:keyup="getInterests(event)"/><br>
-	<div id="container"></div><br>
+	<input type="text" size="30" id="search" placeholder="Search an interest" v-on:keyup="getInterests"/><br><br>
+  <div id="container"></div><br>
 	<div id="selected">
-		<span> You can select [[noOfSelected.count]] more interests </span><br>
-		<input type="button" class="intrOption" v-for="intrs in list_interests" :value="[[intrs]]" v-on:click="removeInterest(event)"/>&nbsp&nbsp
+		<br><span> You can select [[noOfSelected.count]] more interests </span><br>
+		<input type="button" class="intrOption" v-for="intrs in list_interests" :value="[[intrs]]" v-on:click="removeInterest"/>&nbsp&nbsp
 	</div><hr>
 	<div id="options">
 		<span> Some Popular Options</span><br>
-		<input type="button" class="intrOption" v-for="intrs in interests_show" :value="[[intrs]]" v-on:click="addInterest(event)"/>&nbsp&nbsp
+		<input type="button" class="intrOption" v-for="intrs in interests_show" :value="[[intrs]]" v-on:click="addInterest"/>&nbsp&nbsp
 	</div>
-	<input type="button" name="next" class="interestNext next btn" value="Next"/>
+  </div>
   </fieldset>
   </interests-list>
-
-
 </form>
 </student-details>
 </section>
@@ -273,7 +273,7 @@
     <label id="lbl2" id="value2" for="special">0%</label>
     </div>
     <h3 id="weightageHead">Adjust the slider based on your weightage of importance</h3><br>
-    <input type="button" name="next" class="meterNext btn" value="Next"/>
+    <input type="button" name="next" class="meterNext next btn" value="Next"/>
 </section>
 <section class="recoLoad">
   <span>Analyzing data...</span><br>

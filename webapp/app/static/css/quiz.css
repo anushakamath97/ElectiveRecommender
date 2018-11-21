@@ -16,10 +16,17 @@
 	float: left;
 }
 
-.intrOption{
+#selected>input{
 	border-radius: 1.5em;
-	background-color: #f2f2f2;
-	
+	/*background-color: #f2f2f2;*/
+  background-color: #2d7ac6;
+  color: #ffffff;
+}
+
+.intrOption{
+  border-radius: 1.5em;
+  background-color: #f2f2f2;
+  color: #000000;
 }
 
 .usnDiv{
@@ -35,13 +42,28 @@ input[type="checkbox"]{
 }
 
 .next{
-	float:right;
-	margin-right: 5%;
+	margin-left: 90%;
 	width: 20%;
-	height: 5%;
-	margin-top: 15%;
-	font-size: 1em;
+	margin-top: 60%;
+	font-size: 0.75em;
 }
+
+.next:hover{
+  color: #ffffff;
+}
+
+.specNext,.interestNext{
+  font-size: 1em;
+}
+
+#nextButton{
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+  margin-left: 90%;
+  margin-top: 50%;
+}
+
 .text-danger{
 	font-size: 0.5em;
 }
@@ -92,20 +114,26 @@ input[type="checkbox"]{
 }
 
 #search{
-
 	position: relative;
 	top: 15%;
 	border: solid 1px;
 	border-radius: 2em;
+  padding: 2% 3% 2% 3%;
+  color: #000000;
 }
 
 .interests{
 	display: none;
 	font-size: 1.5em;
-	top: 31%;
-	color: #000000;
-    transition: 0.6s;
-    padding-left: 3%;
+  transition: 0.6s;
+  padding-left: 3%;
+}
+
+#interestContent{
+  position: absolute;
+  margin-top:-15%;
+  color: #ffffff;
+  width: 35vw;
 }
 
 .weightage{

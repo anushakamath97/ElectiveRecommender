@@ -1,6 +1,7 @@
 body{
   font-family: 'Amatic SC', cursive;
-  /*overflow-y: hidden;*/
+  overflow-y: hidden;
+  background-image: url('../images/back.jpg');
 }
 
 header {

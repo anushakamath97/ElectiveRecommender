@@ -229,8 +229,5 @@ var vue = new Vue({
     'interests-list':interestsList,
   },
   methods: {
-  },
-  mounted(){
-    console.log("here");
   }
 });
