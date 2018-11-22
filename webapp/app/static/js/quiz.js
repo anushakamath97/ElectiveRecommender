@@ -10,19 +10,23 @@ showResults=function(){
 
 
 $('.specNext').click(function(){
-	$('.specialisation').fadeOut(1000,function(){
-		$('.home').css('background-image', 'url(../static/images/back.jpg)');	
-	});
 	if($('#semester').val() > 5 && $('#semester').val() < 9)
-	{	$('.prevElectives').delay(2000).fadeIn(1000);
+	{	
+		$('.specialisation').fadeOut(1000);
+		$('.prevElectives').delay(2000).fadeIn(1000);
 		$('.sem5').delay(2000).fadeIn(1000);
 		$curr_page = 5;
 		prevElectiveList = [];
 		elective_no = 1;
 		vue.$refs.student_details.$refs.elective_list.getElectiveNames(elective_no);
 	}
-	else if($('#semester').val() == 5)
+	else if($('#semester').val() == 5){
+		$('.specialisation').fadeOut(1000,function(){
+			$('.home').css('background-image', 'url(../static/images/back.jpg)');	
+		});
+		vue.$refs.student_details.$refs.elective_list.prevElectives=prevElectiveList;	
 		$('.interests').delay(2000).fadeIn(1000);
+	}
 });
 
 $("input:checkbox").on("click", function(){
@@ -58,7 +62,10 @@ $('.elecNext').click(function(){
 		else 
 		{
 			$('.sem'+$curr_page).fadeOut();
-			$('.prevElectives').fadeOut();
+			$('.prevElectives').fadeOut(500,function(){
+				$('.home').css('background-image', 'url(../static/images/back.jpg)');	
+			});
+			vue.$refs.student_details.$refs.elective_list.prevElectives=prevElectiveList;
 			$('.interests').delay(1000).fadeIn(1500);
 		}
 	}

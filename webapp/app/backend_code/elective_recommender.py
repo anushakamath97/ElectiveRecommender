@@ -1,15 +1,21 @@
+import os,sys,inspect
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+sys.path.insert(0,currentdir)
+
 from content_based import electiveBasedRecommend
 from gensim.models import Word2Vec
 import numpy as np
 from keras.models import load_model
 import pandas as pd
+import tensorflow as tf
 
 def getRNNpredictions(rnn_input, elective_no):
-	rnn_model = load_model('models/keywords.h5')
-	rnn_model.compile(loss='categorical_crossentropy',optimizer='RMSProp', metrics=['accuracy'])
-	rnn_predictions = rnn_model.predict(rnn_input)
+	with tf.Session() as sess:
+		rnn_model = load_model('app/models/keywords.h5')
+		rnn_model.compile(loss='categorical_crossentropy',optimizer='RMSProp', metrics=['accuracy'])
+		rnn_predictions = rnn_model.predict(rnn_input)
 	# Load dataset
-	elective_data = pd.read_csv('webapp/app/static/data/electives_data.csv')
+	elective_data = pd.read_csv('app/static/data/electives_data.csv')
 
 	indices = []
 	#indices of electives pertaining to current semester
@@ -24,7 +30,7 @@ def getRNNpredictions(rnn_input, elective_no):
 
 def getPerformancePredictions(elective_no):
 	# Load dataset
-	elective_data = pd.read_csv('webapp/app/static/data/electives_data.csv')
+	elective_data = pd.read_csv('app/static/data/electives_data.csv')
 
 	indices = []
 	#indices of electives pertaining to current semester
@@ -33,7 +39,7 @@ def getPerformancePredictions(elective_no):
 
 def getSpecializationCourses(specialization, elective_no):
 	# Load dataset
-	elective_data = pd.read_csv('webapp/app/static/data/electives_data.csv')
+	elective_data = pd.read_csv('app/static/data/electives_data.csv')
 	#indices of electives pertaining to current semester
 	pool1_indices = [ i for i in range(len(elective_data["Elective_no"])) if elective_data["Elective_no"][i] == elective_no[0] and specialization in elective_data['Specialization'][i]]
 	pool2_indices = [ i for i in range(len(elective_data["Elective_no"])) if elective_data["Elective_no"][i] == elective_no[1] and specialization in  elective_data['Specialization'][i]]
@@ -96,7 +102,7 @@ def getSuggestions(interests, weights, old_electives = None, specialization=None
 	pad_seq = np.zeros(vec_size, dtype=np.float32)
 	
 	#load the pre-trained word2vec model
-	w2v = Word2Vec.load('models/w2v.bin')
+	w2v = Word2Vec.load('app/models/w2v.bin')
 
 	#populate input for rnn model to get electives based on interests
 	vectorList = []

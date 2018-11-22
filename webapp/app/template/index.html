@@ -112,10 +112,10 @@
 <student-details inline-template ref="student_details">
 <form>
   <fieldset class="col-md-8 usnDiv">
-  <div id="nextButton"><input type="button" name="next" class="usnNext next btn" value="Next" :disabled="studentDetails.usn==null || studentDetails.usn.length!=12"/></div>
+  <div id="nextButton"><input type="button" name="next" class="usnNext next btn" value="Next" :disabled="studentDetails.usn==null || (studentDetails.usn.length!=12 && !(studentDetails.usn.substring(0,7).toUpperCase()=='01FB15'|| studentDetails.usn.substring(0,7).toUpperCase()=='01FB16'))"/></div>
   <span>ENTER USN</span>
-  <input type="text" name="usn" placeholder="USN" v-model="studentDetails.usn" v-on:keyup="updateSem" />
-  <span v-cloak v-if="studentDetails.usn!=null && studentDetails.usn.length!=12" class="text-danger">* Enter valid USN</span><br>
+  <input type="text" name="usn" placeholder="USN" v-model="studentDetails.usn" v-on:keyup="updateSem" /><br>
+  <span v-cloak v-if="studentDetails.usn!=null && (studentDetails.usn.length!=12 && !(studentDetails.usn.substring(0,7).toUpperCase()=='01FB15'|| studentDetails.usn.substring(0,7).toUpperCase()=='01FB16'))" class="invalidUsn text-danger">* Enter valid USN</span><br>
   <input type="radio" name="term" class="term" v-on:change="updateSem" v-model="studentDetails.term" value="even"> Even Semester<br>
   <input type="radio" name="term" class="term" v-on:change="updateSem" v-model="studentDetails.term" value="odd"> Odd Semester<br>
   <span>SEMESTER</span>
@@ -124,10 +124,10 @@
   <fieldset class="col-md-8 specialisation">
   <div id="nextButton"><input type="button" name="next" class="next specNext btn" value="Next"/></div>
   <span id="specHead">Select Your Desired Specialisation</span><br><br>
-  <input type="radio" name="Specialisation" value="AlgoAndComp" > Algorithms and Computing Models<br>
-  <input type="radio" name="Specialisation" value="DataScience"> Data Science<br>
-  <input type="radio" name="Specialisation" value="systemAndCore"> System and Core Computing<br>
-  <input type="radio" name="Specialisation" value="none" checked> None
+  <input type="radio" v-model="studentDetails.specialisation" name="Specialisation" v-bind:value="'AlgoAndComp'" > Algorithms and Computing Models<br>
+  <input type="radio" v-model="studentDetails.specialisation" name="Specialisation" v-bind:value="'DataScience'"> Data Science<br>
+  <input type="radio" v-model="studentDetails.specialisation" name="Specialisation" v-bind:value="'systemAndCore'"> System and Core Computing<br>
+  <input type="radio" v-model="studentDetails.specialisation" name="Specialisation" v-bind:value="'none'" checked> None
   <br><br><br>
   </fieldset>
   <elective-list inline-template ref="elective_list">

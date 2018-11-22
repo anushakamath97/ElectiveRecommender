@@ -34,7 +34,7 @@
 }
 
 .usnDiv{
-	font-size: 3em;
+	font-size: 2.5em;
 	top: 31%;
 	color: #000000;
     transition: 0.6s;
@@ -64,8 +64,8 @@ input[type="checkbox"]{
   position: absolute;
   width: 100%;
   z-index: -1;
-  margin-left: 0%;
-  margin-top: 0%;
+  margin-left: 90%;
+  margin-top: 50%;
 }
 
 .text-danger{
@@ -96,11 +96,12 @@ input[type="checkbox"]{
 	display: none;
 	font-size: 1.5em;
 	position:relative;
-	top: 20%;
+	margin-top: -5%;
 	color: #000000;
     transition: 0.6s;
     padding-left: 0.2%;
 	width: 75%;
+  margin-left: -5%;
 }
 
 .elecHead{

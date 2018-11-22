@@ -7,11 +7,12 @@ import pandas as pd
 
 import os,sys,inspect
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parentdir = os.path.dirname(currentdir)
-main_dir = os.path.dirname(parentdir)
-sys.path.insert(0,main_dir)
+# parentdir = os.path.dirname(currentdir)
+# main_dir = os.path.dirname(parentdir)
+sys.path.insert(0,currentdir)
 print(sys.path)
 
+from backend_code import elective_recommender as er
 context={}
 electiveNames=[]
 def elective(request):
@@ -56,4 +57,12 @@ class interestsView(APIView):
 				if key.startswith(prefix):
 					final_list.append(key)
 		data = {'interestNames' : set(final_list)}
+		return Response(data)
+
+class recoView(APIView):
+	def put(self,request):
+		print(request.data)
+		recoResult=er.getSuggestions(request.data['interests'], request.data['weights'], old_electives=request.data['oldElectives'], specialization=request.data['specialisation'])
+		print(recoResult)
+		data=recoResult
 		return Response(data)

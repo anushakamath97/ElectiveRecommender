@@ -6,13 +6,13 @@ from itertools import groupby
 def get_recommendations(oldElective, elective_no):
 	
 	# Load dataset
-	elective_data = pd.read_csv('webapp/app/static/data/electives_data.csv')
+	elective_data = pd.read_csv('app/static/data/electives_data.csv')
 
 	#indices of electives pertaining to current semester
 	elective_indices = [ i for i in range(len(elective_data["Elective_no"])) if elective_data["Elective_no"][i] == elective_no]
 
 	#load the pre-computed cosine similarity matrix
-	cosine_sim = np.load("models/cosine_similarity.npy")
+	cosine_sim = np.load("app/models/cosine_similarity.npy")
 
 	#Construct a reverse map of indices and course names
 	indices = pd.Series([x for x in range(len(elective_data['Course_name']))], index=elective_data['Course_name']).drop_duplicates()

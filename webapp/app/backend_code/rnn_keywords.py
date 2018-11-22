@@ -4,7 +4,7 @@ from keras.layers import Dense#for layers
 from keras.layers import SimpleRNN
 from keras.layers import Input
 
-data = np.load("models/keywordsData.npy")
+data = np.load("app/models/keywordsData.npy")
 
 vector_length = 32 #the length of each word is 32
 max_seq_len = data.shape[1]

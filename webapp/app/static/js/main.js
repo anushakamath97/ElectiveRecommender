@@ -5,6 +5,7 @@ var studentDetailsComp=Vue.component('student-details',{
         usn:null,
         term:"even",
         sem:5,
+        specialisation:"none",
       },
     }
   },
@@ -14,7 +15,6 @@ var studentDetailsComp=Vue.component('student-details',{
     },
     updateSem:function(){
       if(this.studentDetails.usn!=null && this.studentDetails.usn.length>4){
-        console.log(this.studentDetails.term);
         if(this.studentDetails.usn.substring(4,6)=="15"){
           if(this.studentDetails.term=="even")
             this.studentDetails.sem=8;
@@ -27,7 +27,6 @@ var studentDetailsComp=Vue.component('student-details',{
           else if(this.studentDetails.term=="odd")
             this.studentDetails.sem=5;
         }
-        console.log(this.studentDetails.sem);
       }
     }
   }
@@ -42,6 +41,7 @@ var electiveList = Vue.component('elective-list',{
       Elective4:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
       Elective5:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
       Elective6:[{cname:null},{cname:null},{cname:null},{cname:null},{cname:null},{cname:null},{cname:null}],
+      prevElectives:[],
     }
   },
   methods:{
@@ -49,28 +49,31 @@ var electiveList = Vue.component('elective-list',{
       this.$http.get('/elective/getElectiveNames',{elecNumber})
           .then((response) => {
             if(elecNumber==1){
-              for(var i=0;i<response.data['elecName'][0].length;i++)
+              for(var i=0;i<response.data['elecName'][0].length;i++){
                 this.Elective1[i].cname = response.data['elecName'][0][i];
+              }
 
-	      for(var i=0;i<response.data['elecName'][1].length;i++)
+	      for(var i=0;i<response.data['elecName'][1].length;i++){
                 this.Elective2[i].cname = response.data['elecName'][1][i];
-              
+              }
             }
             else if(elecNumber==3){
-              for(var i=0;i<response.data['elecName'][2].length;i++)
+              for(var i=0;i<response.data['elecName'][2].length;i++){
                 this.Elective3[i].cname = response.data['elecName'][2][i];
+              }
 
-	      for(var i=0;i<response.data['elecName'][3].length;i++)
+	      for(var i=0;i<response.data['elecName'][3].length;i++){
                 this.Elective4[i].cname = response.data['elecName'][3][i];
-           
+              }
             }
             else if(elecNumber==5){
-              for(var i=0;i<response.data['elecName'][4].length;i++)
+              for(var i=0;i<response.data['elecName'][4].length;i++){
                 this.Elective5[i].cname = response.data['elecName'][4][i];
+              }
 
-	      for(var i=0;i<response.data['elecName'][5].length;i++)
+	      for(var i=0;i<response.data['elecName'][5].length;i++){
                 this.Elective6[i].cname = response.data['elecName'][5][i];
-              
+              }
             }
           })
           .catch((err) => {
@@ -212,11 +215,27 @@ var recoResultComp=Vue.component('reco-result',{
   },
   methods:{
     getRecommendation:function(){
-      this.electiveName.firstPool1="Multimedia  Computing";
-      this.electiveName.firstPool2="XML Technologies";
-      this.electiveName.secondPool1="Design Patterns";
-      this.electiveName.secondPool2="Autonomous Mobile Robotics";
-      console.log("reco");
+      // this.electiveName.firstPool1="Multimedia  Computing";
+      // this.electiveName.firstPool2="XML Technologies";
+      // this.electiveName.secondPool1="Design Patterns";
+      // this.electiveName.secondPool2="Autonomous Mobile Robotics";
+      var intersts=vue.$refs.student_details.$refs.interests_list.list_interests;
+      var weights=[80,40,30];
+      var oldElectives=vue.$refs.student_details.$refs.elective_list.prevElectives;
+      var specialisation=vue.$refs.student_details.studentDetails.specialisation;
+      console.log(intersts,weights,oldElectives,specialisation)
+      var recoRequest={"interests":intersts,"weights":weights,"oldElectives":oldElectives,"specialisation":specialisation}
+      this.$http.put('/elective/getRecommendations',recoRequest)
+          .then((response) => {
+            console.log(response.data);
+            this.electiveName.firstPool1=response.data['pool1'][0];
+            this.electiveName.firstPool2=response.data['pool1'][1];
+            this.electiveName.secondPool1=response.data['pool2'][0];
+            this.electiveName.secondPool2=response.data['pool2'][1];
+          })
+          .catch((err) => {
+            console.log("error",err);
+          });
     },
     getElectiveData:function(reqElective){
       this.$http.get('/elective/getElectiveData',{reqElective})
@@ -229,7 +248,7 @@ var recoResultComp=Vue.component('reco-result',{
           })
           .catch((err) => {
             console.log("error",err);
-          })
+          });
     }
   }
 });
