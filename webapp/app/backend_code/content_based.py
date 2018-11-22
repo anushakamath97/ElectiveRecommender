@@ -4,15 +4,15 @@ from itertools import groupby
 
 # Function that takes in movie title as input and outputs most similar movies
 def get_recommendations(oldElective, elective_no):
-
+	
 	# Load dataset
-	elective_data = pd.read_csv('electives_data.csv')
+	elective_data = pd.read_csv('webapp/app/static/data/electives_data.csv')
 
 	#indices of electives pertaining to current semester
 	elective_indices = [ i for i in range(len(elective_data["Elective_no"])) if elective_data["Elective_no"][i] == elective_no]
 
 	#load the pre-computed cosine similarity matrix
-	cosine_sim = np.load("cosine_similarity.npy")
+	cosine_sim = np.load("models/cosine_similarity.npy")
 
 	#Construct a reverse map of indices and course names
 	indices = pd.Series([x for x in range(len(elective_data['Course_name']))], index=elective_data['Course_name']).drop_duplicates()
@@ -40,7 +40,8 @@ def get_recommendations(oldElective, elective_no):
 	'''
 
 
-def electiveBasedRecommend(usn, isEvenSem, oldElectives):
+def electiveBasedRecommend(oldElectives):
+	'''	
 	#convert usn to lower case and get year and semester
 	year = 18 #can get from time module also
 	curr_year = year - int(usn.lower().split("fb")[1][:2]) 
@@ -53,12 +54,15 @@ def electiveBasedRecommend(usn, isEvenSem, oldElectives):
 
 	#elective numbers for current semester
 	elective_no = [(curr_sem-4)*2 - 1, (curr_sem-4)*2]
+	'''
+	elective_no = [len(oldElectives)+1, len(oldElectives)+2]
 
 	recommendations = []
 	for (i,elec_no) in enumerate(elective_no):
 		recommendations.append([])
 		for elec in oldElectives:
 			recommendations[i] += get_recommendations(elec, elec_no)
-		print([(g[0], len(list(g[1]))) for g in groupby(sorted(recommendations[i]))])
+		recommendations[i] = list(set(recommendations[i]))
 
-electiveBasedRecommend('01FB15ECS048', False, ['Big Data','Data Analytics', 'Computer Network Security','Digital Image Processing'])	
+	return recommendations
+#electiveBasedRecommend('01FB15ECS048', False, ['Big Data','Data Analytics', 'Computer Network Security','Digital Image Processing'])	

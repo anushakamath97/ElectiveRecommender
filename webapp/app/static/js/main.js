@@ -65,7 +65,7 @@ var interestsList = Vue.component('interests-list',{
 	data : function(){
 		return {
 			list_interests : [],
-			interests_show : ['Machine Learning','Operating Systems','Cloud Computing'],
+			interests_show : ['Deep Learning','Dynamic Programming','Big Data','Data Analytics','Storage Management','Networking'],
 			noOfSelected : {count:10},
 			containerdiv : null,
 			timer: null,

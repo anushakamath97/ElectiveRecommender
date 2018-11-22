@@ -60,8 +60,8 @@ input[type="checkbox"]{
   position: absolute;
   width: 100%;
   z-index: -1;
-  margin-left: 90%;
-  margin-top: 50%;
+  margin-left: 0%;
+  margin-top: 0%;
 }
 
 .text-danger{

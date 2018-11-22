@@ -46,7 +46,7 @@ class electiveNameView(APIView):
 class interestsView(APIView):
 	def get(self,request):
 		elec_data=pd.read_csv('app/static/data/electives_data.csv')
-		interests_list = list(map(lambda s: list(map(lambda key: key.strip(), s.split(','))),elec_data['Keywords']))
+		interests_list = list(map(lambda s: list(map(lambda key: key.strip().lower(), s.split(','))),elec_data['Keywords']))
 		final_list = []
 		
 		prefix = request.GET['prefix'].lower()
@@ -55,5 +55,5 @@ class interestsView(APIView):
 			for key in keywords:
 				if key.startswith(prefix):
 					final_list.append(key)
-		data = {'interestNames' : final_list}
+		data = {'interestNames' : set(final_list)}
 		return Response(data)
