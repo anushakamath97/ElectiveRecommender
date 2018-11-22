@@ -29,6 +29,10 @@
   color: #000000;
 }
 
+.term{
+  font-size: 0.5em;
+}
+
 .usnDiv{
 	font-size: 3em;
 	top: 31%;

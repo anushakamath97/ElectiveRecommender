@@ -3,12 +3,32 @@ var studentDetailsComp=Vue.component('student-details',{
     return{
       studentDetails:{
         usn:null,
+        term:"even",
+        sem:5,
       },
     }
   },
   methods:{
     setShowValue:function(){
       this.$parent.showQuiz=true;
+    },
+    updateSem:function(){
+      if(this.studentDetails.usn!=null && this.studentDetails.usn.length>4){
+        console.log(this.studentDetails.term);
+        if(this.studentDetails.usn.substring(4,6)=="15"){
+          if(this.studentDetails.term=="even")
+            this.studentDetails.sem=8;
+          else if(this.studentDetails.term=="odd")
+            this.studentDetails.sem=7;
+        }
+        else if(this.studentDetails.usn.substring(4,6)=="16"){
+          if(this.studentDetails.term=="even")
+            this.studentDetails.sem=6;
+          else if(this.studentDetails.term=="odd")
+            this.studentDetails.sem=5;
+        }
+        console.log(this.studentDetails.sem);
+      }
     }
   }
 });
