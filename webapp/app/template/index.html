@@ -109,15 +109,16 @@
 </section>
 
 <section id="studentDetailsDiv">
+<span id="closeButton" onclick="document.location.reload()">X</span>
 <student-details inline-template ref="student_details">
 <form>
   <fieldset class="col-md-8 usnDiv">
   <div id="nextButton"><input type="button" name="next" class="usnNext next btn" value="Next" :disabled="studentDetails.usn==null || (studentDetails.usn.length!=12 && !(studentDetails.usn.substring(0,7).toUpperCase()=='01FB15'|| studentDetails.usn.substring(0,7).toUpperCase()=='01FB16'))"/></div>
   <span>ENTER USN</span>
   <input type="text" name="usn" placeholder="USN" v-model="studentDetails.usn" v-on:keyup="updateSem" /><br>
-  <span v-cloak v-if="studentDetails.usn!=null && (studentDetails.usn.length!=12 && !(studentDetails.usn.substring(0,7).toUpperCase()=='01FB15'|| studentDetails.usn.substring(0,7).toUpperCase()=='01FB16'))" class="invalidUsn text-danger">* Enter valid USN</span><br>
-  <input type="radio" name="term" class="term" v-on:change="updateSem" v-model="studentDetails.term" value="even"> Even Semester<br>
-  <input type="radio" name="term" class="term" v-on:change="updateSem" v-model="studentDetails.term" value="odd"> Odd Semester<br>
+  <span v-cloak v-if="studentDetails.usn!=null && (studentDetails.usn.length!=12 && !(studentDetails.usn.substring(0,7)=='01fb15'|| studentDetails.usn.substring(0,7)=='01fb16'))" class="invalidUsn text-danger">* Enter valid USN</span><br>
+  <input type="radio" name="term" class="term" v-on:change="updateSem" v-model="studentDetails.term" value="even"> EVEN &nbsp&nbsp or &nbsp&nbsp 
+  <input type="radio" name="term" class="term" v-on:change="updateSem" v-model="studentDetails.term" value="odd"> ODD &nbsp&nbsp Semester?<br><br>
   <span>SEMESTER</span>
   <input type="text" name="sem" placeholder="SEMESTER" v-model="studentDetails.sem" value="studentDetails.sem" id="semester" disabled />
   </fieldset>
@@ -213,6 +214,7 @@
 </student-details>
 </section>
 </section>
+<weightage-meter inline-template ref="weightage_meter">
 <section class="col-md-8 weightage">
   <div id="meterwrapper">
     <svg id="meter">
@@ -230,7 +232,7 @@
         </circle>
     </svg>
     <img id="meter_needle" src="{% static 'images/svg-meter-gauge-needle.svg' %}" alt="">
-    <input id="slider" name="performance" type="range" min="0" max="100" value="0" /> 
+    <input id="slider" v-model="weightage.performance" name="performance" type="range" min="0" max="100" v-bind:value="0" /> 
     <h3 id="meterHead">Performance</h3>
     <label id="lbl" id="value" for="performance">0%</label>
     </div>
@@ -250,9 +252,9 @@
         </circle>
     </svg>
     <img id="meter_needle1" src="{% static 'images/svg-meter-gauge-needle.svg' %}" alt="">
-    <input id="slider1" name="Interests" type="range" min="0" max="100" value="0" /> 
+    <input id="slider1" v-model="weightage.interests" name="Interests" type="range" min="0" max="100" v-bind:value="0" /> 
     <h3 id="meterHead1">Interests</h3>
-    <label id="lbl1" id="value" for="Intersts">0%</label>
+    <label id="lbl1" id="value1" for="Intersts">0%</label>
     </div>
     <div id="meterwrapper2">
     <svg id="meter2">
@@ -270,13 +272,14 @@
         </circle>
     </svg>
     <img id="meter_needle2" src="{% static 'images/svg-meter-gauge-needle.svg' %}" alt="">
-    <input id="slider2" name="special" type="range" min="0" max="100" value="0" /> 
+    <input id="slider2" v-model="weightage.specialisation" name="special" type="range" min="0" max="100" v-bind:value="0" /> 
     <h3 id="meterHead2">Specialisation</h3>
     <label id="lbl2" id="value2" for="special">0%</label>
     </div>
     <h3 id="weightageHead">Adjust the slider based on your weightage of importance</h3><br>
     <input type="button" name="next" class="meterNext next btn" value="Next"/>
 </section>
+</weightage-meter>
 <section class="recoLoad">
   <span>Analyzing data...</span><br>
 </section>  
@@ -342,6 +345,7 @@
       </div>
       <input type="button" name="back" class="back btn" value="Back"/>
     </div>
+    <input type="button" name="restart" class="restart btn" value="Restart"/>  
     </section>
   </reco-result>
 </section>

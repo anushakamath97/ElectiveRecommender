@@ -136,3 +136,12 @@ header:after {
   }
 }
 
+#closeButton{
+  color: #ffffff;
+  font-size: 4em;
+  float: right;
+  margin-left: 60vw;
+  margin-top: -15vh;
+  position: absolute;
+  z-index: 5;
+}

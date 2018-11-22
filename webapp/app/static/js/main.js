@@ -32,6 +32,20 @@ var studentDetailsComp=Vue.component('student-details',{
   }
 });
 
+var weightageMeterComp=Vue.component('weightage-meter',{
+  data:function(){
+    return{
+      weightage:{
+        performance:0,
+        intersts:0,
+        specialisation:0,
+      },
+    }
+  },
+  methods:{
+  }
+});
+
 var electiveList = Vue.component('elective-list',{
   data:function(){
     return{
@@ -220,7 +234,10 @@ var recoResultComp=Vue.component('reco-result',{
       // this.electiveName.secondPool1="Design Patterns";
       // this.electiveName.secondPool2="Autonomous Mobile Robotics";
       var intersts=vue.$refs.student_details.$refs.interests_list.list_interests;
-      var weights=[80,40,30];
+      var performanceWeight=parseInt(vue.$refs.weightage_meter.weightage.performance);
+      var interestWeight=parseInt(vue.$refs.weightage_meter.weightage.interests);
+      var specialWeight=parseInt(vue.$refs.weightage_meter.weightage.specialisation);
+      var weights=[performanceWeight,interestWeight,specialWeight];
       var oldElectives=vue.$refs.student_details.$refs.elective_list.prevElectives;
       var specialisation=vue.$refs.student_details.studentDetails.specialisation;
       console.log(intersts,weights,oldElectives,specialisation)
@@ -266,6 +283,7 @@ var vue = new Vue({
     'reco-result':recoResultComp,
     'elective-list':electiveList,
     'interests-list':interestsList,
+    'weightage-meter':weightageMeterComp,
   },
   methods: {
   }

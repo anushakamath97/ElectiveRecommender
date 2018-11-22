@@ -24,7 +24,6 @@ $('.specNext').click(function(){
 		$('.specialisation').fadeOut(1000,function(){
 			$('.home').css('background-image', 'url(../static/images/back.jpg)');	
 		});
-		vue.$refs.student_details.$refs.elective_list.prevElectives=prevElectiveList;	
 		$('.interests').delay(2000).fadeIn(1000);
 	}
 });

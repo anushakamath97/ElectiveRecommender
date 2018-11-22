@@ -10,8 +10,8 @@ scrollUpLanding = function(){
  
   changeBack=function() {
   	$('.startQuiz').hide();
-  	$('.hexa1').delay(1000).fadeOut();
-  	$('.hexa2').delay(2000).fadeOut();	
+  	$('.hexa1').delay(1000).hide();
+  	$('.hexa2').delay(2000).hide();	
     $('.home').delay(5000).css('background-image', 'url(../static/images/stopMotionHome1.gif)');
  	// setTimeout(showQuiz(),5000);
   	$('#studentDetailsDiv').delay(4000).fadeIn();
