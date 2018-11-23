@@ -233,22 +233,32 @@ var recoResultComp=Vue.component('reco-result',{
       // this.electiveName.firstPool2="XML Technologies";
       // this.electiveName.secondPool1="Design Patterns";
       // this.electiveName.secondPool2="Autonomous Mobile Robotics";
+      var usn = vue.$refs.student_details.studentDetails.usn;
+	console.log(usn);
       var intersts=vue.$refs.student_details.$refs.interests_list.list_interests;
       var performanceWeight=parseInt(vue.$refs.weightage_meter.weightage.performance);
       var interestWeight=parseInt(vue.$refs.weightage_meter.weightage.interests);
       var specialWeight=parseInt(vue.$refs.weightage_meter.weightage.specialisation);
-      var weights=[performanceWeight,interestWeight,specialWeight];
+      var weights=[interestWeight,specialWeight,performanceWeight];
       var oldElectives=vue.$refs.student_details.$refs.elective_list.prevElectives;
       var specialisation=vue.$refs.student_details.studentDetails.specialisation;
       console.log(intersts,weights,oldElectives,specialisation)
-      var recoRequest={"interests":intersts,"weights":weights,"oldElectives":oldElectives,"specialisation":specialisation}
+      var recoRequest={"usn": usn,"interests":intersts,"weights":weights,"oldElectives":oldElectives,"specialisation":specialisation}
       this.$http.put('/elective/getRecommendations',recoRequest)
           .then((response) => {
             console.log(response.data);
             this.electiveName.firstPool1=response.data['pool1'][0];
             this.electiveName.firstPool2=response.data['pool1'][1];
-            this.electiveName.secondPool1=response.data['pool2'][0];
-            this.electiveName.secondPool2=response.data['pool2'][1];
+		if('pool2' in response.data){
+			    this.electiveName.secondPool1=response.data['pool2'][0];
+			    this.electiveName.secondPool2=response.data['pool2'][1];
+		}
+		else
+		{
+			    this.electiveName.secondPool1="Not Applicable";
+			    this.electiveName.secondPool2="Not Applicable";
+	
+		}
           })
           .catch((err) => {
             console.log("error",err);

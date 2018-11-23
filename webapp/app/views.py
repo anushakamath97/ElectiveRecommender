@@ -62,7 +62,7 @@ class interestsView(APIView):
 class recoView(APIView):
 	def put(self,request):
 		print(request.data)
-		recoResult=er.getSuggestions(request.data['interests'], request.data['weights'], old_electives=request.data['oldElectives'], specialization=request.data['specialisation'])
+		recoResult=er.getSuggestions(request.data['usn'],request.data['interests'], request.data['weights'], old_electives=request.data['oldElectives'], specialization=request.data['specialisation'])
 		print(recoResult)
 		data=recoResult
 		return Response(data)
