@@ -108,6 +108,7 @@ def getSuggestions(usn, interests, weights, old_electives = None, specialization
 		specialization - One of the three in string or None
 		old_electives - list of string with previous elective names
 	'''
+	usn=usn.upper()
 	interest_weight, specialization_weight, performance_weight = [weight/sum(weights) for weight in weights]
 	
 	elective_no = [len(old_electives)+1, len(old_electives)+2]
