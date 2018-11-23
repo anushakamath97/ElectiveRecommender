@@ -51,7 +51,6 @@ def getPerformancePredictions(usn, elective_no):
 	for course in pool_prereq:
 		for i in range(5):
 			if course in core_subjects[i].tolist():
-				sem = core_subjects[i].tolist()[0]
 				dataframe = pd.read_csv('app/static/data/sem'+str(sem)+'_20'+batch+'batch.csv')
 				row = dataframe.index[dataframe['USN']==usn].tolist()[0]
 				grades.append(dataframe[course].iloc[row][0])
@@ -68,9 +67,12 @@ def getPerformancePredictions(usn, elective_no):
 			grades[i] = 8
 		elif grades[i] == 'C':
 			grades[i] = 7
-		else:
-			del grades[i]
-			del pool_prereq[i]
+		elif grades[i] == 'D':
+			grades[i] = 6
+		elif grades[i] == 'E':
+			grades[i] = 5
+		elif grades[i] == 'F':
+			grades[i] = 4
 	if len(pool_prereq) == 1 and grades[0] >= 7:
 		return pool_prereq
 	grades_index = np.array(grades).argsort()[-2:][::-1]
@@ -108,7 +110,7 @@ def getSuggestions(usn, interests, weights, old_electives = None, specialization
 		specialization - One of the three in string or None
 		old_electives - list of string with previous elective names
 	'''
-	usn=usn.upper()
+	usn = usn.upper()
 	interest_weight, specialization_weight, performance_weight = [weight/sum(weights) for weight in weights]
 	
 	elective_no = [len(old_electives)+1, len(old_electives)+2]
