@@ -51,6 +51,7 @@ def getPerformancePredictions(usn, elective_no):
 	for course in pool_prereq:
 		for i in range(5):
 			if course in core_subjects[i].tolist():
+				sem = core_subjects[i].tolist()[0]
 				dataframe = pd.read_csv('app/static/data/sem'+str(sem)+'_20'+batch+'batch.csv')
 				row = dataframe.index[dataframe['USN']==usn].tolist()[0]
 				grades.append(dataframe[course].iloc[row][0])
