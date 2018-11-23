@@ -19,7 +19,7 @@ python3 manage.py runserver
 ```
 On your browser enter 127.0.0.1:8000/elective and explore the webapp.
 
-###Acknowledgement
+##Acknowledgement
 This project was done as a part of Web Technologies II course at PES University
 
 
