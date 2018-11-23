@@ -113,10 +113,10 @@
 <student-details inline-template ref="student_details">
 <form>
   <fieldset class="col-md-8 usnDiv">
-  <div id="nextButton"><input type="button" name="next" class="usnNext next btn" value="Next" :disabled="studentDetails.usn==null || (studentDetails.usn.length!=12 && !(studentDetails.usn.substring(0,7).toUpperCase()=='01FB15'|| studentDetails.usn.substring(0,7).toUpperCase()=='01FB16'))"/></div>
+  <div id="nextButton"><input type="button" name="next" class="usnNext next btn" value="Next" :disabled="studentDetails.usn==null || (!(studentDetails.usn.substring(0,6)=='01fb15'|| studentDetails.usn.substring(0,6)=='01fb16') || studentDetails.usn.length!=12)"/></div>
   <span>ENTER USN</span>
   <input type="text" name="usn" placeholder="USN" v-model="studentDetails.usn" v-on:keyup="updateSem" /><br>
-  <span v-cloak v-if="studentDetails.usn!=null && (studentDetails.usn.length!=12 && !(studentDetails.usn.substring(0,7)=='01fb15'|| studentDetails.usn.substring(0,7)=='01fb16'))" class="invalidUsn text-danger">* Enter valid USN</span><br>
+  <span v-cloak v-if="studentDetails.usn!=null && (!(studentDetails.usn.substring(0,6)=='01fb15'|| studentDetails.usn.substring(0,6)=='01fb16') || studentDetails.usn.length!=12)" class="invalidUsn text-danger">* Enter valid USN</span><br>
   <input type="radio" name="term" class="term" v-on:change="updateSem" v-model="studentDetails.term" value="even"> EVEN &nbsp&nbsp or &nbsp&nbsp 
   <input type="radio" name="term" class="term" v-on:change="updateSem" v-model="studentDetails.term" value="odd"> ODD &nbsp&nbsp Semester?<br><br>
   <span>SEMESTER</span>
